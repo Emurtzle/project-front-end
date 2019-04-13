@@ -15,11 +15,11 @@ class ItemCard extends Component {
         let {name, brand, expiration} = this.props.item
 
         return(
-            <Card className={"has-background-grey-light"}>
+            <Card size="4by3" className={"has-background-grey-light"}>
                 <Card.Image size={64} src={makeupIcon} alt="Makeup icon type"/>
                 <Card.Content>
                     <Card.Header.Title>{name}</Card.Header.Title>
-                    <Card.Header>{brand}</Card.Header>
+                    <Card.Header>By: {brand}</Card.Header>
                     <Card.Header>Expires: {expiration}</Card.Header>
                 </Card.Content>
                 <Card.Footer >

@@ -25,7 +25,7 @@ class NewItemForm extends React.Component {
 
   render() {
     return (
-      <Container >
+      <Container fluid>
 
         <form>
         <label>
