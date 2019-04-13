@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
-import { Navbar, Button } from 'react-bulma-components';
+import { Navbar, Container } from 'react-bulma-components'
 import logo from '../logo.png'
 
 class NavigationBar extends Component {
@@ -13,7 +13,7 @@ class NavigationBar extends Component {
     }
     render() {
         return (
-            <div>
+            <Container>
                 <Navbar color={"primary"} fixed={"top"} active={false} transparent={false}>
                     
                     <Navbar.Brand>
@@ -25,7 +25,7 @@ class NavigationBar extends Component {
 
                     <Navbar.Menu>
                         <Navbar.Container>
-                            <Navbar.Item href="/">Closet</Navbar.Item>
+                            <Navbar.Item href="/">Collection</Navbar.Item>
                             <Navbar.Item href="/">Inspiration</Navbar.Item>
                         </Navbar.Container>
 
@@ -36,7 +36,7 @@ class NavigationBar extends Component {
 
                     </Navbar.Menu>
                 </Navbar>
-            </div>
+            </Container>
         )
     }
 }

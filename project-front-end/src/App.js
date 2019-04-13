@@ -1,17 +1,33 @@
 import React, { Component } from 'react';
 import NavigationBar from './Containers/NavigationBar'
 import NewItemForm from './Containers/NewItemForm'
+import { Columns, Container, Heading } from 'react-bulma-components'
+import 'react-bulma-components/dist/react-bulma-components.min.css'
 
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <Container>
         <NavigationBar />
         <NewItemForm />
 
-      </div>
+        <Columns>
+          <Columns.Column size={"half"} >
+              <Container fluid className={"has-background-info"}>
+                <Heading className={"has-text-centered has-text-white"}>Collection</Heading>
+              </Container>
+            </Columns.Column>
+
+            <Columns.Column size={"half"}>
+            <Container fluid className={"has-background-info"}>
+              <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
+            </Container>
+            </Columns.Column>
+
+          </Columns>
+        </Container>
     );
   }
 }

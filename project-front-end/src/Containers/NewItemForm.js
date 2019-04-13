@@ -1,5 +1,6 @@
 import React from 'react'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
+import { Container } from 'react-bulma-components'
 
 class NewItemForm extends React.Component {
   constructor() {
@@ -24,7 +25,7 @@ class NewItemForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container >
 
         <form>
         <label>
@@ -75,7 +76,7 @@ class NewItemForm extends React.Component {
         </label>
         </form>
 
-      </div>
+      </Container>
     )
   }
 }
