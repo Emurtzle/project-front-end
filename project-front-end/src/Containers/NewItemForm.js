@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { Component, PureComponent } from 'react'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
-import { Container } from 'react-bulma-components'
+import { Form, Container } from 'react-bulma-components'
+import {
+  Field,
+  Control,
+  Label,
+  Input,
+  Textarea,
+  Select,
+  Checkbox,
+  Radio,
+  Help,
+} from 'react-bulma-components/lib/components/form';
+import Button from 'react-bulma-components/lib/components/button';
+import Icon from 'react-bulma-components/lib/components/icon';
 
-class NewItemForm extends React.Component {
+
+class NewItemForm extends Component {
   constructor() {
     super()
     this.state = {
