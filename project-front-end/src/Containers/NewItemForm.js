@@ -102,7 +102,10 @@ class NewItemForm extends Component {
 
         <Form.Field kind="group">
           <Form.Control>
-            <Button color="primary">Submit</Button>
+            <Button color="primary">Add To Collection</Button>
+          </Form.Control>
+          <Form.Control>
+            <Button color="primary">Add Another</Button>
           </Form.Control>
           <Form.Control>
             <Button color="link">Cancel</Button>
