@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <Container fluid >
         <NavigationBar />
-        <NewItemForm />
+        {/* <NewItemForm /> */}
 
         <Columns >
           <Columns.Column size="one-third" >

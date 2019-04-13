@@ -1,6 +1,8 @@
 import React, { Component, PureComponent } from 'react'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
-import { Form, Container } from 'react-bulma-components'
+import 'bulma-calendar/dist/css/bulma-calendar.min.css'
+import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min.js'
+import { Container } from 'react-bulma-components'
 import {
   Field,
   Control,
@@ -8,91 +10,130 @@ import {
   Input,
   Textarea,
   Select,
-  Checkbox,
-  Radio,
   Help,
-} from 'react-bulma-components/lib/components/form';
-import Button from 'react-bulma-components/lib/components/button';
-import Icon from 'react-bulma-components/lib/components/icon';
+} from 'react-bulma-components'
+import Button from 'react-bulma-components'
+import Icon from 'react-bulma-components'
 
 
 class NewItemForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    
     this.state = {
-      makeup_type: '',
-      rating: ''
+      makeupType: '',
+      rating: '',
+      brand: "",
+      name: "",
+      notes: "",
+      expiration: ""
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleChange = (ev) => {
+    const value = ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
+    this.setState({[ev.target.name]: value})
   }
-
-  handleSubmit(event) {
-    alert('Your favorite flavor is: ' + this.state.value);
-    event.preventDefault();
-  }
-
 
   render() {
+    const { makeupType, name, brand, rating, expiration, notes } = this.state
+
     return (
-      <Container fluid>
+      <Container fluid >
+        <Field >
+          <Label>Type</Label>
+          <Control>
+            <Select onChange={this.handleChange} name="makeupType" value={makeupType} >
+              <option value="">Select</option>
+              <option value="eyeshadow">Eyeshadow</option>
+              <option value="eyeliner">Eyeliner</option>
+              <option value="eyebrow">Eyebrow</option>
+              <option value="mascara">Mascara</option>
+              <option value="eye_primer">Eye Primer</option>
+              <option value="false_eyelashes">False Eyelashes</option>
+              <option value="under-eye_concealer">Under-eye Concealer</option>
+              <option value="bullet_lipstick">Bullet Lipstick</option>
+              <option value="liquid_lipstick">Liquid Lipstick</option>
+              <option value="lip_stain">Lip Stain</option>
+              <option value="lip_liner">Lip Liner</option>
+              <option value="blush">Blush</option>
+              <option value="bronzer">Bronzer</option>
+              <option value="highlighter">Highlighter</option>
+              <option value="contour">Contour</option>
+              <option value="foundation">Foundation</option>
+              <option value="bb_cc_cream">BB & CC Cream</option>
+              <option value="tinted_moisturizer">Tinted Moisturizer</option>
+              <option value="concealer">Concealer</option>
+              <option value="face_primer">Face Primer</option>
+              <option value="setting_spray">Setting Spray</option>
+              <option value="setting_powder">Setting Powder</option>
+            </Select>
+          </Control>
+        </Field>
 
-        <form>
-        <label>
-        Describe the new item for your collection!
-        <input type='text' placeholder='Name'></input>
-        <input type='text' placeholder='Brand'></input>
-        <input type='text' placeholder='Image'></input>
+        <Field >
+          <Label>Name</Label>
+          <Control>
+            <Input onChange={this.handleChange} name="name" type="text" placeholder="Name" value={name} />
+          </Control>
+        </Field>
 
-        <input type='text' placeholder='Notes'></input>
-        <label>
-        Rating:
-          <select value={this.state.rating} onChange={this.handleChange}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          </label>
-          <label>
-          Type of product:
-          <select value={this.state.makeup_type} onChange={this.handleChange}>
-            <option value="Eyeshadow">Eyeshadow</option>
-            <option value="Eyeliner">Eyeliner</option>
-            <option value="Eyebrow">Eyebrow</option>
-            <option value="Mascara">Mascara</option>
-            <option value="Eye Primer">Eye Primer</option>
-            <option value="False Eyelashes">False Eyelashes</option>
-            <option value="Under-eye Concealer">Under-eye Concealer</option>
-            <option value="Bullet Lipstick">Bullet Lipstick</option>
-            <option value="Liquid Lipstick">Liquid Lipstick</option>
-            <option value="Lip Stain">Lip Stain</option>
-            <option value="Lip Liner">Lip Liner</option>
-            <option value="Blush">Blush</option>
-            <option value="Bronzer">Bronzer</option>
-            <option value="Highlighter">Highlighter</option>
-            <option value="Contour">Contour</option>
-            <option value="Foundation">Foundation</option>
-            <option value="BB & CC Cream">BB & CC Cream</option>
-            <option value="Tinted Moisturizer">Tinted Moisturizer</option>
-            <option value="Concealer">Concealer</option>
-            <option value="Face Primer">Face Primer</option>
-            <option value="Setting Spray">Setting Spray</option>
-            <option value="Setting Powder">Setting Powder</option>
-          </select>
-          </label>
-        <input type="submit"/>
-        </label>
-        </form>
+        <Field >
+          <Label>Brand</Label>
+          <Control>
+            <Input onChange={this.handleChange} name="brand" type="text" placeholder="Brand" value={brand} />
+          </Control>
+        </Field>
+      
+        <Field >
+          <Label>Rating</Label>
+          <Control>
+            <Select>
+              <Select onChange={this.handleChange} name="rating" value={rating}>
+                <option value={""}>Select</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+              </Select>
+            </Select>
+          </Control>
+        </Field>
 
+        <Field>
+          <Label>Expiration</Label>
+          <input type="date"/>
+        </Field>
+      
+        <Field>
+          <Label>Notes</Label>
+          <Control>
+            <Textarea onChange={this.handleChange} name="notes" value={notes} placeholder="Notes" />
+          </Control>
+        </Field>
+
+        <Field kind="group" >
+          <Control>
+            <Button color="Primary" >Submit</Button>
+          </Control>
+          <Control color="link">Cancel</Control>
+        
+        </Field>
+
+
+
+
+
+
+        <pre>
+          <code>{JSON.stringify(this.state, null, 2)}</code>
+        </pre>
+      
       </Container>
     )
   }
 }
+
 
 export default NewItemForm;
