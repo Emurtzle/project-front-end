@@ -3,7 +3,7 @@ import NavigationBar from './Containers/NavigationBar'
 import NewItemForm from './Containers/NewItemForm'
 import Collection from './Containers/Collection'
 import Content from './Containers/Content'
-import { Columns, Container, Heading } from 'react-bulma-components'
+import { Columns, Container } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
 
 import './App.css';
@@ -11,11 +11,11 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <Container fluid>
+      <Container fluid >
         <NavigationBar />
         <NewItemForm />
 
-        <Columns>
+        <Columns >
           <Columns.Column size="one-third" >
               <Collection />
             </Columns.Column>
