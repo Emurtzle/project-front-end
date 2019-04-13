@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
-import { Navbar } from 'react-bulma-components'
+import { Navbar, Button } from 'react-bulma-components'
 import logo from '../logo.png'
 
 class NavigationBar extends Component {
@@ -26,6 +26,9 @@ class NavigationBar extends Component {
                     <Navbar.Container>
                         <Navbar.Item href="/">Collection</Navbar.Item>
                         <Navbar.Item href="/">Inspiration</Navbar.Item>
+                        <Navbar.Item>
+                            <Button color="info" onClick={this.props.addItemToggle}>Add Item</Button>
+                        </Navbar.Item>
                     </Navbar.Container>
 
                     <Navbar.Container position="end">

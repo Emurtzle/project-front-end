@@ -2,18 +2,7 @@ import React, { Component, PureComponent } from 'react'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
 import 'bulma-calendar/dist/css/bulma-calendar.min.css'
 import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min.js'
-import { Container } from 'react-bulma-components'
-import {
-  Field,
-  Control,
-  Label,
-  Input,
-  Textarea,
-  Select,
-  Help,
-} from 'react-bulma-components'
-import Button from 'react-bulma-components'
-import Icon from 'react-bulma-components'
+import { Container, Form, Button } from 'react-bulma-components'
 
 
 class NewItemForm extends Component {
@@ -39,11 +28,11 @@ class NewItemForm extends Component {
     const { makeupType, name, brand, rating, expiration, notes } = this.state
 
     return (
-      <Container fluid >
-        <Field >
-          <Label>Type</Label>
-          <Control>
-            <Select onChange={this.handleChange} name="makeupType" value={makeupType} >
+      <Container fluid>
+        <Form.Field>
+          <Form.Control>
+            <Form.Label>Type</Form.Label>
+            <Form.Select onChange={this.handleChange} name="makeupType" value={makeupType}>
               <option value="">Select</option>
               <option value="eyeshadow">Eyeshadow</option>
               <option value="eyeliner">Eyeliner</option>
@@ -67,69 +56,59 @@ class NewItemForm extends Component {
               <option value="face_primer">Face Primer</option>
               <option value="setting_spray">Setting Spray</option>
               <option value="setting_powder">Setting Powder</option>
-            </Select>
-          </Control>
-        </Field>
+            </Form.Select>
+          </Form.Control>
+        </Form.Field>
 
-        <Field >
-          <Label>Name</Label>
-          <Control>
-            <Input onChange={this.handleChange} name="name" type="text" placeholder="Name" value={name} />
-          </Control>
-        </Field>
+        <Form.Field>
+          <Form.Control>
+            <Form.Label>Name</Form.Label>
+            <Form.Input onChange={this.handleChange} name="name" type="text" placeholder="Name" value={name} />
+          </Form.Control>
+        </Form.Field>
 
-        <Field >
-          <Label>Brand</Label>
-          <Control>
-            <Input onChange={this.handleChange} name="brand" type="text" placeholder="Brand" value={brand} />
-          </Control>
-        </Field>
-      
-        <Field >
-          <Label>Rating</Label>
-          <Control>
-            <Select>
-              <Select onChange={this.handleChange} name="rating" value={rating}>
-                <option value={""}>Select</option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-              </Select>
-            </Select>
-          </Control>
-        </Field>
+        <Form.Field>
+          <Form.Control>
+            <Form.Label>Brand</Form.Label>
+            <Form.Input onChange={this.handleChange} name="brand" type="text" placeholder="Brand" value={brand} />
+          </Form.Control>
+        </Form.Field>
 
-        <Field>
-          <Label>Expiration</Label>
-          <input type="date"/>
-        </Field>
-      
-        <Field>
-          <Label>Notes</Label>
-          <Control>
-            <Textarea onChange={this.handleChange} name="notes" value={notes} placeholder="Notes" />
-          </Control>
-        </Field>
+        <Form.Field>
+          <Form.Control>
+            <Form.Label>Rating</Form.Label>
+            <Form.Select onChange={this.handleChange} name="rating" value={rating}>
+              <option value={""}>Select</option>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+            </Form.Select>
+          </Form.Control>
+        </Form.Field>
 
-        <Field kind="group" >
-          <Control>
-            <Button color="Primary" >Submit</Button>
-          </Control>
-          <Control color="link">Cancel</Control>
-        
-        </Field>
+        <Form.Field>
+          <Form.Control>
+            <Form.Label>Expiration Date</Form.Label>
+            <input type="date"></input>
+          </Form.Control>
+        </Form.Field>
 
+        <Form.Field>
+          <Form.Label>Notes</Form.Label>
+          <Form.Textarea onChange={this.handleChange} name="notes" value={notes} placeholder="Type Here" />
+        </Form.Field>
 
+        <Form.Field kind="group">
+          <Form.Control>
+            <Button color="primary">Submit</Button>
+          </Form.Control>
+          <Form.Control>
+            <Button color="link">Cancel</Button>
+          </Form.Control>
+        </Form.Field>
 
-
-
-
-        <pre>
-          <code>{JSON.stringify(this.state, null, 2)}</code>
-        </pre>
-      
       </Container>
     )
   }
