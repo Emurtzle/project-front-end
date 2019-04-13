@@ -48,7 +48,7 @@ class Content extends Component {
                     thumbnail: null
                 }
             ],
-            Pinterest: [
+            pinterest: [
                 {
                     title: "Do People Use This Anymore?",
                     creator: "Bob Ross",
@@ -71,23 +71,52 @@ class Content extends Component {
         }
     }
 
-    
+    loadYoutube = () => {
+        return this.state.youtube.map((content, index) => (
+            <ContentCard content={content} key={index} />
+        ))
+    }
+
+    loadReddit = () => {
+        return this.state.reddit.map((content, index) => (
+            <ContentCard content={content} key={index} />
+        ))
+    }
+
+    loadPinterest = () => {
+        return this.state.pinterest.map((content, index) => (
+            <ContentCard content={content} key={index} />
+        ))
+    }
 
     render() {
         return(
             <Container fluid className={"has-background-info"}>
-                <Heading className={"has-text-centered has-text-white"}>Collection</Heading>
+                <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
 
                 <Tabs type="toggle" fullwidth={true} align="centered">
-                    <Tabs.Tab>
+                    
+                    <Tabs.Tab active>
                         <Heading size={4}>Youtube</Heading>
+                        <Container fluid>
+                            {this.loadYoutube()}
+                        </Container>
                     </Tabs.Tab>
+
                     <Tabs.Tab>
-                    <Heading size={4}>Reddit</Heading>
+                        <Heading size={4}>Reddit</Heading>
+                        <Container fluid>
+                            {this.loadReddit()}
+                        </Container>
                     </Tabs.Tab>
+
                     <Tabs.Tab>
-                    <Heading size={4}>Pinterest</Heading>
+                        <Heading size={4}>Pinterest</Heading>
+                        <Container fluid>
+                            {this.loadPinterest()}
+                        </Container>
                     </Tabs.Tab>
+
                 </Tabs>
 
             </Container>

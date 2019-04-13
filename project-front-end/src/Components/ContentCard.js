@@ -15,7 +15,7 @@ class ContentCard extends Component {
         let {title, creator, thumbnail, url} = this.props.content
         return (
             <Card size="4by3" className={"has-background-grey-light"}>
-                <Card.Image size={64} src={thumbnail} alt="Makeup icon type"/>
+                <Card.Image size={64} src={thumbnail} alt="Thumbnail"/>
                 <Card.Content>
                     <Card.Header.Title>{title}</Card.Header.Title>
                     <Card.Header>By: {creator}</Card.Header>
