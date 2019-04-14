@@ -1,43 +1,7 @@
 import React, { Component } from 'react'
-import { Container, Heading } from 'react-bulma-components'
+import { Container, Heading, Tabs } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
 import ContentCard from '../Components/ContentCard'
-
-const Tab = (props) => {
-    const { name } = props.tab;
-    const { activeTab, changeActiveTab } = props;
-
-    return (
-        <li className={name === activeTab && "is-active"} onClick={null} >
-            <a>
-                <span>{name}</span>
-            </a>
-        </li>
-    );
-};
-
-class Tabs extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div className="tabs">
-                <ul>
-                    { this.props.tabList.map(tab => 
-                        <Tab    tab={tab}
-                                key={tab.name}
-                                activeTab={this.props.activeTab}
-                                changeActiveTab={this.props.changeActiveTab}
-                        />  
-                    )}
-                </ul>
-            </div>
-        )
-    }
-
-}
 
 const ActiveTabContent = (props) => <div>{props.content}</div>
 
@@ -132,26 +96,33 @@ class Content extends Component {
         ))
     }
 
-    changeActiveTab = (tab) => {
-        this.setState({activeTab: tab})
+    handleTabChange = (ev) => {
+        if (!(ev.target.parentNode.className === "is-active")) {
+            for (var i = 0; i < ev.target.parentNode.parentNode.childNodes.length; i++ ) {
+                ev.target.parentNode.parentNode.childNodes[i].className=""
+            }
+            ev.target.parentNode.className="is-active"
+        }
     }
 
-    activeTabContent = () => {
-        const activeIndex = tabList.findIndex((tab) => {
-            return tab.name === this.state.activeTab
-        })
 
-        return tabList[activeIndex].content;
-    }
 
     render () {
         return (
             <Container fluid className={"has-background-info"}>
                 <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
-                {/* <Tabs   tabList={tabList}
-                        activeTab={this.state.activeTab}
-                        changeActiveTab={this.changeActiveTab}
-                /> */}
+                <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >
+                    <Tabs.Tab className={"is-active"} onClick={this.handleTabChange}>
+                        Youtube
+                    </Tabs.Tab>
+                    <Tabs.Tab onClick={this.handleTabChange}>
+                        Reddit
+                    </Tabs.Tab>
+                    <Tabs.Tab onClick={this.handleTabChange}>
+                        Pinterest
+                    </Tabs.Tab>
+                    {}
+                </Tabs>
             </Container>
         )
     }
