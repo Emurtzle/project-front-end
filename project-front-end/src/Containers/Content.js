@@ -86,6 +86,26 @@ class Content extends Component {
                     url: "Go here yo!",
                     thumbnail: null
                 }
+            ],
+            favorites: [
+                {
+                    title: "Man Bob Ross Sure is Active",
+                    creator: "Bob Ross",
+                    url: "Go here yo!",
+                    thumbnail: null
+                },
+                {
+                    title: "Is he on every platform?",
+                    creator: "Bob Ross",
+                    url: "Go here yo!",
+                    thumbnail: null
+                },
+                {
+                    title: "Well, he is fabulous",
+                    creator: "Bob Ross",
+                    url: "Go here yo!",
+                    thumbnail: null
+                }
             ]
         }
     }
@@ -110,27 +130,54 @@ class Content extends Component {
         return this.loadWebsite(this.state.activeTab)
     }
 
+    openTab = (ev) => {
+        var tabs = document.getElementsByClassName("content-conTab")
+        var tabLinks = document.getElementsByClassName("conTab")
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].style.display = "none"
+        }
+        for (var i = 0; i < tabs.length; i++ ) {
+            tabLinks[i].className = tabLinks[i].className.replace(" is-active", "")
+        }
+        document.getElementById(`${ev.target.id}conTab`).style.display = ""
+        ev.target.parentNode.className += " is-active"
+
+    }
+
     render () {
         return (
             <Container fluid className={"has-background-info"}>
-            <Button onClick={() => {this.selectTab("redditTab")}}>
-                Test
-            </Button>
                 <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
-                <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >
-                    <Tabs.Tab className={"is-active"} onClick={this.handleTabChange} name="youtube" id="youtube">
+                
+                <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >  
+                    <Tabs.Tab className="conTab is-active" id="youtube" onClick={this.openTab} >
                         Youtube
                     </Tabs.Tab>
-                    <Tabs.Tab onClick={this.handleTabChange} name="reddit" id="redditTab">
+                    <Tabs.Tab className="conTab" id="reddit" onClick={this.openTab}>
                         Reddit
                     </Tabs.Tab>
-                    <Tabs.Tab onClick={this.handleTabChange} name="pinterest" id="pinterestTab">
+                    <Tabs.Tab className="conTab" id="pinterest" onClick={this.openTab}>
                         Pinterest
+                    </Tabs.Tab>
+                    <Tabs.Tab className="conTab" id="favorites" onClick={this.openTab}>
+                        Favorites
                     </Tabs.Tab>
                 </Tabs>
 
-                <Container fluid>
-                        {this.renderActiveTab()}
+                <Container fluid id="youtubeconTab" className="content-conTab" >
+                        {this.loadWebsite("youtube")}
+                </Container>
+
+                <Container fluid id="redditconTab" className="content-conTab" style={{display: "none"}}>
+                        {this.loadWebsite("reddit")}
+                </Container>
+
+                <Container fluid id="pinterestconTab" className="content-conTab" style={{display: "none"}}>
+                        {this.loadWebsite("pinterest")}
+                </Container>
+
+                <Container fluid id="favoritesconTab" className="content-conTab" style={{display: "none"}}>
+                        {this.loadWebsite("favorites")}
                 </Container>
             </Container>
         )

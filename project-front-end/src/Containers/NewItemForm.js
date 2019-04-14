@@ -34,11 +34,11 @@ class NewItemForm extends Component {
             <Form.Label>Type</Form.Label>
             <Form.Select onChange={this.handleChange} name="makeup_type" value={makeup_type}>
               <option value="">Select</option>
-              <option value="contour">Contour</option>
               <option value="bb_cc_cream">BB & CC Cream</option>
               <option value="blush">Blush</option>
               <option value="bronzer">Bronzer</option>
               <option value="concealer">Concealer</option>
+              <option value="contour">Contour</option>
               <option value="eye_primer">Eye Primer</option>
               <option value="eyebrow">Eyebrow</option>
               <option value="eyeliner">Eyeliner</option>

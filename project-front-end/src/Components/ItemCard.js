@@ -29,8 +29,7 @@ class ItemCard extends Component {
         super(props)
 
         this.state = {
-            active: false,
-            icon: null
+            icon: makeupIcon
         }
     }
 
@@ -82,11 +81,10 @@ class ItemCard extends Component {
         let { name, brand, notes, rating, expiration } = this.props.item
         let icon = this.state.icon
 
-        return(
-
-            <Tile vertical kind="ancestor">
+        return (
+            <Tile vertical kind="ancestor" onClick={this.props.onClick}>
                 <Tile size={12} kind="parent">   
-                    <Tile size={8} kind="child">
+                    <Tile size={2} kind="child">
                         <Tile >
                             <Image size={48} src={icon} alt="Makeup Icon" />
                             <Tile vertical kind="child">
@@ -96,12 +94,17 @@ class ItemCard extends Component {
                         </Tile>
                     </Tile>
 
-                    <Tile size={4} kind="child">
+                    <Tile size={1} kind="child">
                         <Tile vertical>
                             <Heading size={6}>Expires</Heading>
                             <Heading subtitle size={6}>{expiration}</Heading>
                         </Tile>
                     </Tile>
+
+                    <Tile size={1} kind="child">
+                        <button className="delete has-background-danger"/>
+                    </Tile>
+
                 </Tile>
 
                 <Tile size={12} kind="parent">
@@ -109,7 +112,7 @@ class ItemCard extends Component {
                         {this.renderStars(rating)}
                     </Tile>
                     <Tile size={4} kind="child">
-                        <Button>Edit</Button>
+                        <Button outlined>Edit</Button>
                     </Tile>
                 </Tile>
             </Tile>
