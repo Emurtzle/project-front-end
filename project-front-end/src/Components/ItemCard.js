@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Card } from 'react-bulma-components'
+import { Tile, Image, Heading, Button } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
-import test from '../icons/eyeshadow.png'
 
+import star from '../icons/star.png'
 import bb_cc_creamImg from '../icons/bb_cc_cream.png'
 import blushImg from '../icons/blush.png'
 import bronzerImg from '../icons/bronzer.png'
@@ -70,27 +70,49 @@ class ItemCard extends Component {
         this.setState({icon: this.iconList()[this.props.item.makeup_type]})
     }
 
+    renderStars = (rating) => {
+        var stars = []
+        for (var i = 0; i < rating; i++) {
+            stars.push(<Image size={24} src={star} alt="Star" key={i} />)
+        }
+        return stars
+    }
+
     render() {
-        let { name, brand, makeup_type, notes, rating, expiration } = this.props.item
+        let { name, brand, notes, rating, expiration } = this.props.item
         let icon = this.state.icon
 
         return(
-            <Card size="4by3" className={"has-background-grey-light"}>
-                <Card.Image size={48} src={icon} alt="Makeup Icon Type"/>
-                <Card.Content>
-                    <Card.Header.Title>{name}</Card.Header.Title>
-                    <Card.Header>By: {brand}</Card.Header>
-                    <Card.Header>Expires: {expiration}</Card.Header>
-                </Card.Content>
-                <Card.Footer >
-                    <Card.Footer.Item renderAs="a" href="#edit">
-                        Edit
-                    </Card.Footer.Item>
-                    <Card.Footer.Item renderAs="a" href="#remove">
-                        Remove
-                    </Card.Footer.Item>
-                </Card.Footer>
-            </Card>
+
+            <Tile vertical kind="ancestor">
+                <Tile size={12} kind="parent">   
+                    <Tile size={8} kind="child">
+                        <Tile >
+                            <Image size={48} src={icon} alt="Makeup Icon" />
+                            <Tile vertical kind="child">
+                                <Heading size={5}>{name}</Heading>
+                                <Heading subtitle size={6}>{brand}</Heading>
+                            </Tile>
+                        </Tile>
+                    </Tile>
+
+                    <Tile size={4} kind="child">
+                        <Tile vertical>
+                            <Heading size={6}>Expires</Heading>
+                            <Heading subtitle size={6}>{expiration}</Heading>
+                        </Tile>
+                    </Tile>
+                </Tile>
+
+                <Tile size={12} kind="parent">
+                    <Tile size={8} >
+                        {this.renderStars(rating)}
+                    </Tile>
+                    <Tile size={4} kind="child">
+                        <Button>Edit</Button>
+                    </Tile>
+                </Tile>
+            </Tile>
         )
     }
 }
