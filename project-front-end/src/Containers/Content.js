@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Heading, Tabs } from 'react-bulma-components'
+import { Container, Heading, Tabs, Button } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
 import ContentCard from '../Components/ContentCard'
 
@@ -26,7 +26,7 @@ class Content extends Component {
         super(props)
 
         this.state = {
-            activeTab: "Youtube",
+            activeTab: "youtube",
             youtube: [
                 {
                     title: "Pop your eyes with the City Light Pallete!",
@@ -102,27 +102,36 @@ class Content extends Component {
                 ev.target.parentNode.parentNode.childNodes[i].className=""
             }
             ev.target.parentNode.className="is-active"
+            this.setState({activeTab: ev.target.name})
         }
     }
 
-
+    renderActiveTab = () => {
+        return this.loadWebsite(this.state.activeTab)
+    }
 
     render () {
         return (
             <Container fluid className={"has-background-info"}>
+            <Button onClick={() => {this.selectTab("redditTab")}}>
+                Test
+            </Button>
                 <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
                 <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >
-                    <Tabs.Tab className={"is-active"} onClick={this.handleTabChange}>
+                    <Tabs.Tab className={"is-active"} onClick={this.handleTabChange} name="youtube" id="youtube">
                         Youtube
                     </Tabs.Tab>
-                    <Tabs.Tab onClick={this.handleTabChange}>
+                    <Tabs.Tab onClick={this.handleTabChange} name="reddit" id="redditTab">
                         Reddit
                     </Tabs.Tab>
-                    <Tabs.Tab onClick={this.handleTabChange}>
+                    <Tabs.Tab onClick={this.handleTabChange} name="pinterest" id="pinterestTab">
                         Pinterest
                     </Tabs.Tab>
-                    {}
                 </Tabs>
+
+                <Container fluid>
+                        {this.renderActiveTab()}
+                </Container>
             </Container>
         )
     }
