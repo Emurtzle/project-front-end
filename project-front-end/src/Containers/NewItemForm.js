@@ -10,7 +10,7 @@ class NewItemForm extends Component {
     super(props)
     
     this.state = {
-      makeupType: '',
+      makeup_type: '',
       rating: '',
       brand: "",
       name: "",
@@ -25,37 +25,33 @@ class NewItemForm extends Component {
   }
 
   render() {
-    const { makeupType, name, brand, rating, expiration, notes } = this.state
+    const { makeup_type, name, brand, rating, expiration, notes } = this.state
 
     return (
       <Container fluid>
         <Form.Field>
           <Form.Control>
             <Form.Label>Type</Form.Label>
-            <Form.Select onChange={this.handleChange} name="makeupType" value={makeupType}>
+            <Form.Select onChange={this.handleChange} name="makeup_type" value={makeup_type}>
               <option value="">Select</option>
-              <option value="eyeshadow">Eyeshadow</option>
-              <option value="eyeliner">Eyeliner</option>
-              <option value="eyebrow">Eyebrow</option>
-              <option value="mascara">Mascara</option>
-              <option value="eye_primer">Eye Primer</option>
-              <option value="false_eyelashes">False Eyelashes</option>
-              <option value="under-eye_concealer">Under-eye Concealer</option>
-              <option value="bullet_lipstick">Bullet Lipstick</option>
-              <option value="liquid_lipstick">Liquid Lipstick</option>
-              <option value="lip_stain">Lip Stain</option>
-              <option value="lip_liner">Lip Liner</option>
+              <option value="contour">Contour</option>
+              <option value="bb_cc_cream">BB & CC Cream</option>
               <option value="blush">Blush</option>
               <option value="bronzer">Bronzer</option>
-              <option value="highlighter">Highlighter</option>
-              <option value="contour">Contour</option>
-              <option value="foundation">Foundation</option>
-              <option value="bb_cc_cream">BB & CC Cream</option>
-              <option value="tinted_moisturizer">Tinted Moisturizer</option>
               <option value="concealer">Concealer</option>
+              <option value="eye_primer">Eye Primer</option>
+              <option value="eyebrow">Eyebrow</option>
+              <option value="eyeliner">Eyeliner</option>
+              <option value="eyeshadow">Eyeshadow</option>
               <option value="face_primer">Face Primer</option>
-              <option value="setting_spray">Setting Spray</option>
+              <option value="false_eyelashes">False Eyelashes</option>
+              <option value="foundation">Foundation</option>
+              <option value="highlighter">Highlighter</option>
+              <option value="lip">Lip</option>
+              <option value="mascara">Mascara</option>
               <option value="setting_powder">Setting Powder</option>
+              <option value="setting_spray">Setting Spray</option>
+              <option value="tinted_moisturizer">Tinted Moisturizer</option>
             </Form.Select>
           </Form.Control>
         </Form.Field>

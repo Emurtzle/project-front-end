@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
 import { Navbar, Button } from 'react-bulma-components'
-import logo from '../logo.png'
+import logo from '../icons/logo.png'
 
 class NavigationBar extends Component {
     constructor(props) {

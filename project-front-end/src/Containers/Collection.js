@@ -12,31 +12,37 @@ class Collection extends Component {
                 {
                     name: "Blue Eagle",
                     brand: "Aspire",
+                    makeup_type: "eyeshadow",
                     expiration: "tuesday"
                 },
                 {
                     name: "Sparkle Planet",
                     brand: "Lust Mechanic",
+                    makeup_type: "eyeliner",
                     expiration: "Next Month"
                 },
                 {
                     name: "Butterfly Dust",
                     brand: "Lust Mechanic",
+                    makeup_type: "foundation",
                     expiration: "Next Week"
                 },
                 {
                     name: "City Nights",
                     brand: "Sephora",
+                    makeup_type: "concealer",
                     expiration: "Tomorrow"
                 },
                 {
                     name: "Spring Days",
                     brand: "Ulta",
+                    makeup_type: "lip",
                     expiration: "Thursday"
                 },
                 {
                     name: "Nightclub",
                     brand: "Cover Girl",
+                    makeup_type: "mascara",
                     expiration: "now"
                 }
             ]
