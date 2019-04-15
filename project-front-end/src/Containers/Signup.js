@@ -38,6 +38,7 @@ class Signup extends Component {
     })
       .then(r => r.json())
       .then(console.log)
+      //store the token in local storage
   }
 
   render() {

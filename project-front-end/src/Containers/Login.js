@@ -21,11 +21,11 @@ class Login extends Component {
     this.setState({[ev.target.name]: value})
   }
 
-  //get auth from user profiles on backend
+  // get auth from user profiles on backend
   handleSubmit = (ev) => {
     //post to user database
-      fetch('http://localhost:3000/users', {
-      method: 'GET',
+      fetch('http://localhost:3000/profile', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -34,11 +34,15 @@ class Login extends Component {
         user: {
           name: this.state.username,
           password: this.state.password,
-        }
+          }
+        })
       })
-    })
-      .then(r => r.json())
-      .then(console.log)
+      .then(response => response.json())
+      .then(json => {
+        localStorage.setItem('UserID', json.user.id);
+        localStorage.setItem('UserName', json.user.name);
+
+      })
   }
 
 
