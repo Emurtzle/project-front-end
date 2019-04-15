@@ -42,11 +42,11 @@ class App extends Component {
 
         <Columns >
           <Columns.Column size="one-third" >
-              <Login/>
+              <Collection/>
             </Columns.Column>
 
             <Columns.Column size="two-thirds">
-              <Content />
+              <Login />
             </Columns.Column>
 
           </Columns>

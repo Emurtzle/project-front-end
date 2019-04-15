@@ -5,6 +5,15 @@ import ContentCard from '../Components/ContentCard'
 
 const ActiveTabContent = (props) => <div>{props.content}</div>
 
+// let activeItem = 'Modern Renaissance'
+// this.fetchActive()
+//
+//   fetchActive() {
+//     fetch('https://www.reddit.com/r/MakeupAddiction/.json')
+//     .then(response => response.json())
+//     .then(items => console.log(items))
+//   }
+
 const tabList = [
     {
         name: "Youtube",
@@ -148,8 +157,8 @@ class Content extends Component {
         return (
             <Container fluid className={"has-background-info"}>
                 <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
-                
-                <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >  
+
+                <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >
                     <Tabs.Tab className="conTab is-active" id="youtube" onClick={this.openTab} >
                         Youtube
                     </Tabs.Tab>

@@ -40,6 +40,7 @@ class Login extends Component {
       .then(response => response.json())
       .then(json => {
         localStorage.setItem('UserID', json.user.id);
+        localStorage.setItem('Token', json.token);
         localStorage.setItem('UserName', json.user.name);
 
       })

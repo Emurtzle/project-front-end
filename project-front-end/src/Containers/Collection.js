@@ -8,53 +8,26 @@ class Collection extends Component {
         super(props)
 
         this.state ={
-            items: [
-                {
-                    name: "Blue Eagle",
-                    brand: "Aspire",
-                    makeup_type: "eyeshadow",
-                    expiration: "Tuesday",
-                    rating: 4
-                },
-                {
-                    name: "Sparkle Planet",
-                    brand: "Lust Mechanic",
-                    makeup_type: "eyeliner",
-                    expiration: "Next Month",
-                    rating: 3
-                },
-                {
-                    name: "Butterfly Dust",
-                    brand: "Lust Mechanic",
-                    makeup_type: "foundation",
-                    expiration: "Next Week",
-                    rating: 5
-                },
-                {
-                    name: "City Nights",
-                    brand: "Sephora",
-                    makeup_type: "concealer",
-                    expiration: "Tomorrow",
-                    rating: 2
-                },
-                {
-                    name: "Spring Days",
-                    brand: "Ulta",
-                    makeup_type: "lip",
-                    expiration: "Thursday",
-                    rating: 1
-                },
-                {
-                    name: "Nightclub",
-                    brand: "Cover Girl",
-                    makeup_type: "mascara",
-                    expiration: "now",
-                    rating: 5
-                }
-            ],
+          current_user: localStorage.getItem("UserID"),
+          token: localStorage.getItem('Token'),
+            items: [],
             activeTab: null,
             query: ""
         }
+      this.fetchCollection()
+    }
+
+    fetchCollection() {
+      //gotta send the token over
+      fetch((`http://localhost:3000/collections/${this.state.current_user}`), {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${this.state.token}`
+        }
+      })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      //pulling from database is working just need to publish to cards
     }
 
     loadAllItems = () => {
@@ -95,7 +68,7 @@ class Collection extends Component {
         return (
             <Container fluid className={"has-background-info"}>
                 <Heading className={"has-text-centered has-text-white"}>Collection</Heading>
-                
+
                 <Panel >
                     <Panel.Block>
                         <Form.Control>
