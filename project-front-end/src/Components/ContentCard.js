@@ -15,25 +15,12 @@ class ContentCard extends Component {
     render() {
         let {title, creator, thumbnail, url} = this.props.content
         return (
-            // <Card size="4by3" className={"has-background-grey-light"}>
-            //     <Card.Image size={64} src={thumbnail} alt="Thumbnail"/>
-            //     <Card.Content>
-            //         <Card.Header.Title>{title}</Card.Header.Title>
-            //         <Card.Header>By: {creator}</Card.Header>
-            //     </Card.Content>
-            //     <Card.Footer >
-            //         <Card.Footer.Item renderAs="a" href={url}>
-            //             Visit
-            //         </Card.Footer.Item>
-            //     </Card.Footer>
-            // </Card>
-
             <Tile kind="ancestor" className="has-background-primary">
-                <Tile size={1}>
-                    <Image size={72} src={temp} alt="Thumbnail" />
+                <Tile size={2}>
+                    <Image size={96} src={temp} alt="Thumbnail" />
                 </Tile>
 
-                <Tile kind="parent" size={9} vertical>
+                <Tile kind="parent" size={8} vertical>
                     <Heading>{title}</Heading>
                     <Heading size={4}subtitle>{creator}</Heading>
                 </Tile>

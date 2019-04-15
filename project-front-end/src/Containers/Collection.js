@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import { Container, Heading, Panel, Form, Tabs, Button, Tile, Image } from 'react-bulma-components'
+import { Container, Heading, Panel, Form } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
+
 import ItemCard from '../Components/ItemCard'
+import Accordion from './Accordion'
 
 class Collection extends Component {
     constructor(props) {
@@ -52,7 +54,6 @@ class Collection extends Component {
                     rating: 5
                 }
             ],
-            activeTab: null,
             query: ""
         }
     }
@@ -108,123 +109,66 @@ class Collection extends Component {
                         <Panel.Tabs.Tab>Favorites</Panel.Tabs.Tab>
                     </Panel.Tabs>
                 </Panel>
-                <Tabs>
-                    <Tabs.Tab className="colTab all is-active" id="all" onClick={this.openTab}>
-                        All
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="bb_and_cc_Cream" onClick={this.openTab}>
-                        BB and CC Cream
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="blush" onClick={this.openTab}>
-                        Blush
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="Bronzer" onClick={this.openTab}>
-                        Bronzer
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="Concealer" onClick={this.openTab}>
-                        Concealer
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="Contour" onClick={this.openTab}>
-                        Contour
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="eye_primer" onClick={this.openTab}>
-                        Eye Primer
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="eyebrow" onClick={this.openTab}>
-                        Eyebrow
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="eyeliner" onClick={this.openTab}>
-                        Eyeliner
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="eyeshadow" onClick={this.openTab}>
-                        Eyeshadow
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="face_primer" onClick={this.openTab}>
-                        Face Primer
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="false_eyelashes" onClick={this.openTab}>
-                        False Eyelashes
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="foundation" onClick={this.openTab}>
-                        Foundation
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="highlighter" onClick={this.openTab}>
-                        Highlighter
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="lips" onClick={this.openTab}>
-                        Lipstick/Stain/Gloss/Etc.
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="mascara" onClick={this.openTab}>
-                        Mascara
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="setting_powder" onClick={this.openTab}>
-                    Setting Powder
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="setting_spray" onClick={this.openTab}>
-                        Setting Spray
-                    </Tabs.Tab>
-                    <Tabs.Tab className="colTab all" id="tinted_moisturizer" onClick={this.openTab}>
-                        Tinted Moisturizer
-                    </Tabs.Tab>
-                </Tabs>
-
-                    <Container fluid className="content-colTab all" id="all-colTab">
-                        {this.loadAllItems()}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="bb_and_cc_Cream-colTab"  style={{display: "none"}}>
-                        {this.loadItemCategory("bb_cc_cream")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="blush-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("blush")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="Bronzer-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("bronzer")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="Concealer-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("concealer")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="Contour-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("contour")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="eye_primer-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("eye_primer")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="eyebrow-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("eyebrow")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="eyeliner-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("eyeliner")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="eyeshadow-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("eyeshadow")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="face_primer-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("face_primer")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="false_eyelashes-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("false_eyelashes")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="foundation-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("foundation")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="highlighter-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("highlighter")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="lips-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("lips")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="mascara-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("mascara")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="setting_powder-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("setting_powder")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="setting_spray-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("setting_spray")}
-                    </Container>
-                    <Container fluid className="content-colTab all" id="tinted_moisturizer-colTab" style={{display: "none"}}>
-                        {this.loadItemCategory("tinted_moisturizer")}
-                    </Container>
+                
+                <Accordion>
+                    <div label='All'>
+                        
+                    </div>
+                    <div label='BB and CC Cream'>
+                        
+                    </div>
+                    <div label='Blush'>
+                        
+                    </div>
+                    <div label='Bronzer'>
+                        
+                    </div>
+                    <div label='Concealer'>
+                        
+                    </div>
+                    <div label='Contour'>
+                        
+                    </div>
+                    <div label='Eye Primer'>
+                        
+                    </div>
+                    <div label='Eyebrow'>
+                        
+                    </div>
+                    <div label='Eyeliner'>
+                        
+                    </div>
+                    <div label='Eyeshadow'>
+                        
+                    </div>
+                    <div label='Face Primer'>
+                        
+                    </div>
+                    <div label='False Eyelashes'>
+                        
+                    </div>
+                    <div label='Foundation'>
+                        
+                    </div>
+                    <div label='Highlighter'>
+                        
+                    </div>
+                    <div label='Lips'>
+                        
+                    </div>
+                    <div label='Mascara'>
+                        
+                    </div>
+                    <div label='Setting Powder'>
+                        
+                    </div>
+                    <div label='Setting Spray'>
+                        
+                    </div>
+                    <div label='Tined Moisturizer'>
+                        
+                    </div>
+                </Accordion>
 
 
 
