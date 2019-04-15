@@ -39,6 +39,7 @@ class Signup extends Component {
       .then(r => r.json())
       .then(json => {
         localStorage.setItem('UserID', json.user.id);
+        localStorage.setItem('Token', json.token);
         localStorage.setItem('UserName', json.user.name);
       })
       //store the token in local storage
