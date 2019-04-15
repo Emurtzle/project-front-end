@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Container, Heading, Panel, Form } from 'react-bulma-components'
+import { Container, Heading, Panel, Form, Tile } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
 
 import ItemCard from '../Components/ItemCard'
@@ -103,70 +103,146 @@ class Collection extends Component {
                             <Form.Input onChange={this.handleSearch} size="small" type="text" placeholder="Search" value={this.state.query} />
                         </Form.Control>
                     </Panel.Block>
-
-                    <Panel.Tabs>
-                        <Panel.Tabs.Tab active>All</Panel.Tabs.Tab>
-                        <Panel.Tabs.Tab>Favorites</Panel.Tabs.Tab>
-                    </Panel.Tabs>
                 </Panel>
-                
+
                 <Accordion>
                     <div label='All'>
-                        
+                        <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadAllItems()}
+                            </Tile>
+                        </Tile>  
                     </div>
                     <div label='BB and CC Cream'>
-                        
+                        <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("bb_cc_cream")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Blush'>
-                        
+                        <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("blush")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Bronzer'>
-                        
+                        <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("bronzer")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Concealer'>
-                        
+                        <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("concealer")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Contour'>
-                        
+                        <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                            {this.loadItemCategory("contour")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Eye Primer'>
-                        
+                        <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("eye_primer")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Eyebrow'>
-                        
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("eyebrow")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Eyeliner'>
-                        
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("eyeliner")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Eyeshadow'>
-                        
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("eyeshadow")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Face Primer'>
-                        
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("face_primer")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='False Eyelashes'>
-                        
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("eye_primer")}
+                            </Tile>
+                        </Tile> 
+                        {this.loadItemCategory("false_eyelashes")}
                     </div>
                     <div label='Foundation'>
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("foundation")}
+                            </Tile>
+                        </Tile> 
                         
                     </div>
                     <div label='Highlighter'>
-                        
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                            {this.loadItemCategory("highlighter")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Lips'>
-                        
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("lips")}
+                            </Tile>
+                        </Tile> 
                     </div>
                     <div label='Mascara'>
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("mascara")}
+                            </Tile>
+                        </Tile> 
                         
                     </div>
                     <div label='Setting Powder'>
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("setting_powder")}
+                            </Tile>
+                        </Tile> 
                         
                     </div>
                     <div label='Setting Spray'>
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("setting_spray")}
+                            </Tile>
+                        </Tile> 
                         
                     </div>
                     <div label='Tined Moisturizer'>
-                        
+                         <Tile kind="ancestor" vertical>
+                            <Tile size={12} vertical kind="parent">
+                                {this.loadItemCategory("tinted_moisturizer")}
+                            </Tile>
+                        </Tile>    
                     </div>
                 </Accordion>
 

@@ -27,12 +27,15 @@ class Accordion extends Component {
         const { onClick, props: { children }, state: { openSections } } = this
 
         return (
-            <div style={{ border: '2px solid #008f68' }}>
-                {children.map(child => (
+            <div style={{ 
+                border: '2px solid #008f68'
+            }}>
+                {children.map((child, index) => (
                     <AccordionSection
                         isOpen={!!openSections[child.props.label]}
                         label={child.props.label}
                         onClick={onClick}
+                        key={index}
                     >
                         {child.props.children}
                     </AccordionSection>

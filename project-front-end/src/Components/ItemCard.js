@@ -29,7 +29,8 @@ class ItemCard extends Component {
         super(props)
 
         this.state = {
-            icon: makeupIcon
+            icon: makeupIcon,
+            active: false
         }
     }
 
@@ -77,44 +78,62 @@ class ItemCard extends Component {
         return stars
     }
 
+    toggle = () => {
+        this.setState({active: !this.state.active})
+    }
+
     render() {
         let { name, brand, notes, rating, expiration } = this.props.item
-        let icon = this.state.icon
+        let { icon, active } = this.state
 
         return (
-            <Tile vertical kind="ancestor" onClick={this.props.onClick} className="has-background-primary">
-                <Tile size={12} kind="parent">   
-                    <Tile size={8} kind="child">
+            <Tile 
+                vertical
+                kind="child"
+                onClick={this.toggle} 
+                className={active ? "has-background-success" : "has-background-info"} 
+                style={{
+                    border: active ? '5px solid #ffff00' : ''
+                }}
+            >
+                <Tile size={12}>   
+                    <Tile size={8}>
                         <Tile >
                             <Image size={48} src={icon} alt="Makeup Icon" />
-                            <Tile vertical kind="child">
+                            <Tile vertical>
                                 <Heading size={5}>{name}</Heading>
                                 <Heading subtitle size={6}>{brand}</Heading>
                             </Tile>
                         </Tile>
                     </Tile>
 
-                    <Tile size={3} kind="child">
+                    <Tile size={active ? 3 : 4}>
                         <Tile vertical>
                             <Heading size={6}>Expires</Heading>
                             <Heading subtitle size={6}>{expiration}</Heading>
                         </Tile>
                     </Tile>
 
-                    <Tile size={1} kind="child">
-                        <button className="delete has-background-danger"/>
-                    </Tile>
+                    {active && (
+                        <Tile size={1}>
+                            <button className="delete has-background-danger"/>
+                        </Tile>
+                    )}
+                    
 
                 </Tile>
 
-                <Tile size={12} kind="parent">
-                    <Tile size={9} >
-                        {this.renderStars(rating)}
+                {active && (
+                    <Tile size={12}>
+                        <Tile size={9} >
+                            {this.renderStars(rating)}
+                        </Tile>
+                        <Tile size={3}>
+                            <Button size="small" color="link" fullwidth outlined>Edit</Button>
+                        </Tile>
                     </Tile>
-                    <Tile size={3} kind="child">
-                        <Button size="small" color="link" fullwidth outlined>Edit</Button>
-                    </Tile>
-                </Tile>
+                )}
+                
             </Tile>
         )
     }
