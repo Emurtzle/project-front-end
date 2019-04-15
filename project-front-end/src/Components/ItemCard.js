@@ -82,9 +82,9 @@ class ItemCard extends Component {
         let icon = this.state.icon
 
         return (
-            <Tile vertical kind="ancestor" onClick={this.props.onClick}>
+            <Tile vertical kind="ancestor" onClick={this.props.onClick} className="has-background-primary">
                 <Tile size={12} kind="parent">   
-                    <Tile size={2} kind="child">
+                    <Tile size={8} kind="child">
                         <Tile >
                             <Image size={48} src={icon} alt="Makeup Icon" />
                             <Tile vertical kind="child">
@@ -94,7 +94,7 @@ class ItemCard extends Component {
                         </Tile>
                     </Tile>
 
-                    <Tile size={1} kind="child">
+                    <Tile size={3} kind="child">
                         <Tile vertical>
                             <Heading size={6}>Expires</Heading>
                             <Heading subtitle size={6}>{expiration}</Heading>
@@ -108,11 +108,11 @@ class ItemCard extends Component {
                 </Tile>
 
                 <Tile size={12} kind="parent">
-                    <Tile size={8} >
+                    <Tile size={9} >
                         {this.renderStars(rating)}
                     </Tile>
-                    <Tile size={4} kind="child">
-                        <Button outlined>Edit</Button>
+                    <Tile size={3} kind="child">
+                        <Button size="small" color="link" fullwidth outlined>Edit</Button>
                     </Tile>
                 </Tile>
             </Tile>

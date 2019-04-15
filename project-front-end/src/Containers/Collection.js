@@ -168,61 +168,61 @@ class Collection extends Component {
                     </Tabs.Tab>
                 </Tabs>
 
-                    <Container className="content-colTab all" id="all-colTab">
+                    <Container fluid className="content-colTab all" id="all-colTab">
                         {this.loadAllItems()}
                     </Container>
-                    <Container className="content-colTab all" id="bb_and_cc_Cream-colTab"  style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="bb_and_cc_Cream-colTab"  style={{display: "none"}}>
                         {this.loadItemCategory("bb_cc_cream")}
                     </Container>
-                    <Container className="content-colTab all" id="blush-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="blush-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("blush")}
                     </Container>
-                    <Container className="content-colTab all" id="Bronzer-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="Bronzer-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("bronzer")}
                     </Container>
-                    <Container className="content-colTab all" id="Concealer-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="Concealer-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("concealer")}
                     </Container>
-                    <Container className="content-colTab all" id="Contour-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="Contour-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("contour")}
                     </Container>
-                    <Container className="content-colTab all" id="eye_primer-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="eye_primer-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("eye_primer")}
                     </Container>
-                    <Container className="content-colTab all" id="eyebrow-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="eyebrow-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("eyebrow")}
                     </Container>
-                    <Container className="content-colTab all" id="eyeliner-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="eyeliner-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("eyeliner")}
                     </Container>
-                    <Container className="content-colTab all" id="eyeshadow-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="eyeshadow-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("eyeshadow")}
                     </Container>
-                    <Container className="content-colTab all" id="face_primer-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="face_primer-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("face_primer")}
                     </Container>
-                    <Container className="content-colTab all" id="false_eyelashes-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="false_eyelashes-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("false_eyelashes")}
                     </Container>
-                    <Container className="content-colTab all" id="foundation-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="foundation-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("foundation")}
                     </Container>
-                    <Container className="content-colTab all" id="highlighter-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="highlighter-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("highlighter")}
                     </Container>
-                    <Container className="content-colTab all" id="lips-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="lips-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("lips")}
                     </Container>
-                    <Container className="content-colTab all" id="mascara-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="mascara-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("mascara")}
                     </Container>
-                    <Container className="content-colTab all" id="setting_powder-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="setting_powder-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("setting_powder")}
                     </Container>
-                    <Container className="content-colTab all" id="setting_spray-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="setting_spray-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("setting_spray")}
                     </Container>
-                    <Container className="content-colTab all" id="tinted_moisturizer-colTab" style={{display: "none"}}>
+                    <Container fluid className="content-colTab all" id="tinted_moisturizer-colTab" style={{display: "none"}}>
                         {this.loadItemCategory("tinted_moisturizer")}
                     </Container>
 
