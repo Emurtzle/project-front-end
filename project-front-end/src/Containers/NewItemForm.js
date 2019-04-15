@@ -29,11 +29,54 @@ class NewItemForm extends Component {
   handleType = (ev) => {
     const value = ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
     this.setState({[ev.target.name]: value})
-    this.setExpiration()
+  }
+
+  handleExpiration = (newincrement) => {
+    let increment = parseInt(newincrement)
+    let year = parseInt(this.state.purchase_date.slice(0, 4))
+    let month = parseInt(this.state.purchase_date.slice(5, 7))
+    let day = parseInt(this.state.purchase_date.slice(8, 10))
+    let monthsLeft = 12 - month
+    let newMonth = ''
+    let newYear = ''
+
+    if (increment < 12) {
+      if (increment < monthsLeft) {
+        console.log(monthsLeft)
+        console.log(increment)
+        let newMonth = month + increment
+        this.setExp(year, newMonth, day)
+
+        console.log(newMonth)
+      } else {
+        let newMonth = Math.round((month + increment/12))
+        let newYear = year + 1
+        console.log(newMonth)
+        console.log(newYear)
+        this.setExp(newYear, newMonth, day)
+      }
+    } else if (increment == 12) {
+      let newYear = year + 1
+      console.log(newYear)
+      this.setExp(newYear, month, day)
+
+    } else if (increment == 24) {
+      let newYear = year + 2
+      console.log(newYear)
+      this.setExp(newYear, month, day)
+
+    }
+  }
+
+  setExp(year, month, day) {
+    this.setState({
+      expiration: `${month}/${day}/${year}`
+    })
   }
 
   handleSubmit = (ev) => {
     console.log(this.state)
+    this.setExpiration()
     //post to database
   }
 
@@ -42,20 +85,24 @@ class NewItemForm extends Component {
     const oneYear = ['bb_cc_cream', 'concealer', 'cream_contour', 'foundation', 'highlighter', 'lip_product', 'tinted_moisturizer'];
     const twoYear = ['blush','bronzer','powder_contour','eye_primer','eyebrow','pencil_eyeliner','powder_eyeshadow','face_primer','setting_powder','setting_spray'];
     if (this.state.makeup_type == 'mascara') {
-      //recieves date yyyy-mm-dd
-      console.log(this.state.purchase_date + 6)
+      this.handleExpiration(4)
 
     } else if (sixMonth.includes(this.state.makeup_type)) {
-      console.log('hello')
+      this.handleExpiration(6)
+      console.log('hi')
 
 
     } else if (oneYear.includes(this.state.makeup_type)) {
-      console.log('hi')
+      this.handleExpiration(12)
+      console.log('hello')
+
 
     } else if (twoYear.includes(this.state.makeup_type)) {
-      console.log('whatsup')
+      this.handleExpiration(24)
+      console.log('kashjhagk')
 
     }
+    console.log(this.state)
   }
 
   render() {
@@ -72,14 +119,14 @@ class NewItemForm extends Component {
               <option value="blush">Blush</option>
               <option value="bronzer">Bronzer</option>
               <option value="concealer">Concealer</option>
-              <option value="cream contour">Contour</option>
-              <option value="powder contour">Contour</option>
+              <option value="cream_contour">Contour</option>
+              <option value="powder_contour">Contour</option>
               <option value="eye_primer">Eye Primer</option>
               <option value="eyebrow">Eyebrow</option>
-              <option value="liquid eyeliner">Eyeliner</option>
-              <option value="pencil eyeliner">Eyeliner</option>
-              <option value="cream eyeshadow">Eyeshadow</option>
-              <option value="powder eyeshadow">Eyeshadow</option>
+              <option value="liquid_eyeliner">Eyeliner</option>
+              <option value="pencil_eyeliner">Eyeliner</option>
+              <option value="cream_eyeshadow">Eyeshadow</option>
+              <option value="powder_eyeshadow">Eyeshadow</option>
               <option value="face_primer">Face Primer</option>
               <option value="foundation">Foundation</option>
               <option value="highlighter">Highlighter</option>
@@ -123,7 +170,7 @@ class NewItemForm extends Component {
         <Form.Field>
           <Form.Control>
             <Form.Label>Purchase Date</Form.Label>
-            <input  onChange={this.handleChange} value={purchase_date} name="purchase_date" type="date"></input>
+            <input  onChange={this.handleChange} value={purchase_date} name="purchase_date" type="date" ></input>
           </Form.Control>
         </Form.Field>
 
