@@ -54,9 +54,9 @@ class App extends Component {
           <Columns.Column size="two-thirds">
             <Content activeTile={this.state.activeTile}/>
           </Columns.Column>
-
         </Columns>
       </Container>
+
     );
   }
 }

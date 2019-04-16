@@ -20,6 +20,8 @@ class NewItemForm extends Component {
     }
   }
 
+  //post new item to collection
+
 
   handleChange = (ev) => {
     const value = ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
@@ -75,9 +77,28 @@ class NewItemForm extends Component {
   }
 
   handleSubmit = (ev) => {
-    console.log(this.state)
     this.setExpiration()
     //post to database
+  //   fetch('http://localhost:3000/items', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     Accept: 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     item: {
+  //       collection: //need dat collection id
+  //       name: this.state.name,
+  //       brand: this.state.brand,
+  //       makeup_type: this.state.makeup_type,
+  //       purchase_date: this.state.purchase_date,
+  //       notes: this.state.notes,
+  //       rating: this.state.rating,
+  //     }
+  //   })
+  // })
+  //   .then(r => r.json())
+  //   .then(json =>
   }
 
   setExpiration() {
