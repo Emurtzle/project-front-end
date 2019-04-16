@@ -12,16 +12,14 @@ class Collection extends Component {
         this.state = {
             items: [],
             current_user: localStorage.getItem("UserID"),
-            current_collection: localStorage.getItem("CollectionID"),
             token: localStorage.getItem('Token'),
             tiles: [],
             query: ""
         }
-        this.fetchCollection()
     }
 
     componentDidMount() {
-        this.loadTiles()
+        this.fetchCollection()
     }
 
     loadTiles = () => {
@@ -91,12 +89,13 @@ class Collection extends Component {
       .then(response => response.json())
       .then(json => {
         localStorage['CollectionID'] = json.items[0].collection_id;
+        this.fetchItems()
       })
-      this.fetchItems()
     }
 
     fetchItems() {
-      fetch((`http://localhost:3000/items/${this.state.current_collection}`), {
+        console.log(localStorage.getItem('CollectionID'))
+      fetch((`http://localhost:3000/items/${localStorage.getItem('CollectionID')}`), {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${this.state.token}`
@@ -104,7 +103,9 @@ class Collection extends Component {
       })
       .then(response => response.json())
       .then(json => {
+          console.log(json)
         this.setItems(json)
+        this.loadTiles()
       })
       //pulling from database is working just need to publish to cards
     }

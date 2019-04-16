@@ -3,6 +3,7 @@ import 'react-bulma-components/dist/react-bulma-components.min.css'
 import 'bulma-calendar/dist/css/bulma-calendar.min.css'
 import bulmaCalendar from 'bulma-calendar/dist/js/bulma-calendar.min.js'
 import { Container, Form, Button } from 'react-bulma-components'
+import { NavLink } from 'react-router-dom'
 
 
 class Login extends Component {
@@ -42,6 +43,8 @@ class Login extends Component {
         localStorage.setItem('UserID', json.user.id);
         localStorage.setItem('Token', json.token);
         localStorage.setItem('UserName', json.user.name);
+
+        this.props.setLogIn();
       })
   }
 
@@ -65,6 +68,10 @@ class Login extends Component {
 
         <Form.Field >
           <Button onClick={this.handleSubmit} color="primary">Login</Button>
+        </Form.Field>
+
+        <Form.Field>
+          <NavLink to="/signup"><Button>Signup</Button></NavLink>
         </Form.Field>
 
       </Container>

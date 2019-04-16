@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Tile, Image, Heading, Button } from 'react-bulma-components'
+import { Tile, Image, Heading, Button, Modal } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
 
 import star from '../icons/star.png'
@@ -81,6 +81,10 @@ class ItemCard extends Component {
     toggle = () => {
         this.props.sendToContent(this.props.item)
         this.props.selectTile(this.props.item)
+    }
+    
+    displayNotes = () => {
+        
     }
 
     render() {

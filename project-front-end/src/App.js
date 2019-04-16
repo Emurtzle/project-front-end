@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Home from './Home'
 import NavigationBar from './Containers/NavigationBar'
 import NewItemForm from './Containers/NewItemForm'
 import Collection from './Containers/Collection'
@@ -11,15 +12,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Columns, Container, Button } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
 
-import './App.css';
-
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       addItemFormOpen: false,
-      activeTile: ""
+      activeTile: "",
+      loggedIn: false
     }
   }
 
@@ -48,19 +48,10 @@ class App extends Component {
         {addItemToggle ? <NewItemForm /> : null}
 
         <Router>
-          <Route exact path='/signup' component={() => <Signup />}/>
-          <Route exact path='/login' component={() => <Login />}/>
+          <Route exact path="/" component={() => <Home />} />
+          <Route exact path='/signup' component={() => <Signup />} />
+          <Route exact path='/login' component={() => <Login />} />
         </Router>
-
-        <Columns >
-          <Columns.Column size="one-third" >
-            <Collection sendToContent={this.sendToContent}/>
-          </Columns.Column>
-
-          <Columns.Column size="two-thirds">
-            <Content activeTile={this.state.activeTile}/>
-          </Columns.Column>
-        </Columns>
       </Container>
 
     );
