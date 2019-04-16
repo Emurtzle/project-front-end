@@ -79,13 +79,14 @@ class ItemCard extends Component {
     }
 
     toggle = () => {
-        this.props.selectTile(`${this.props.item.name} by ${this.props.item.brand}`)
-        this.setState({active: !this.state.active})
+        this.props.sendToContent(this.props.item)
+        this.props.selectTile(this.props.item)
     }
 
     render() {
         let { name, brand, notes, rating, expiration } = this.props.item
-        let { icon, active } = this.state
+        let active = this.props.active
+        let { icon } = this.state
 
         return (
             <Tile 
@@ -117,24 +118,30 @@ class ItemCard extends Component {
 
                     {active && (
                         <Tile size={1}>
-                            <button className="delete has-background-danger"/>
+                            <button className="delete is-medium"/>
                         </Tile>
                     )}
                     
 
                 </Tile>
-
-                {active && (
                     <Tile size={12}>
-                        <Tile size={9} >
+                        <Tile size={6} >
                             {this.renderStars(rating)}
                         </Tile>
-                        <Tile size={3}>
-                            <Button size="small" color="link" fullwidth outlined>Edit</Button>
-                        </Tile>
+
+                        {active && (
+                            <Tile size={3}>
+                                <Button size="small" color="link" fullwidth outlined>View Notes</Button>
+                            </Tile>
+
+                        )}
+
+                        {active && (
+                            <Tile size={3}>
+                                <Button size="small" color="link" fullwidth outlined>Edit</Button>
+                            </Tile>
+                        )}
                     </Tile>
-                )}
-                
             </Tile>
         )
     }

@@ -14,28 +14,12 @@ const ActiveTabContent = (props) => <div>{props.content}</div>
 //     .then(items => console.log(items))
 //   }
 
-const tabList = [
-    {
-        name: "Youtube",
-        icon: "",
-        content: "Stuff 1"
-    }, {
-        name: "Reddit",
-        icon: "",
-        content: "Stuff 2"
-    }, {
-        name: "Pinterest",
-        icon: "",
-        content: "Stuff 3"
-    }
-]
-
 class Content extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            activeTab: "youtube",
+            activeTab: null,
             youtube: [
                 {
                     title: "Pop your eyes with the City Light Pallete!",
@@ -119,24 +103,22 @@ class Content extends Component {
         }
     }
     // youtube, reddit or pinterest
-    loadWebsite = (website) => {
+    displayWebsite = (website) => {
         return this.state[website].map((content, index) => (
             <ContentCard content={content} key={index} />
         ))
     }
 
-    handleTabChange = (ev) => {
-        if (!(ev.target.parentNode.className === "is-active")) {
-            for (var i = 0; i < ev.target.parentNode.parentNode.childNodes.length; i++ ) {
-                ev.target.parentNode.parentNode.childNodes[i].className=""
-            }
-            ev.target.parentNode.className="is-active"
-            this.setState({activeTab: ev.target.name})
-        }
+    loadYoutube = () => {
+
     }
 
-    renderActiveTab = () => {
-        return this.loadWebsite(this.state.activeTab)
+    loadReddit = () => {
+
+    }
+
+    loadFavorites = () => {
+
     }
 
     openTab = (ev) => {
@@ -157,7 +139,7 @@ class Content extends Component {
         return (
             <Container fluid className={"has-background-info"}>
                 <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
-                <Heading size={2}>Active Tile: {this.props.activeTile}</Heading>
+                <Heading size={2}>Active Tile: {this.props.activeTile.name}</Heading>
                 
                 <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >  
                     <Tabs.Tab className="conTab is-active" id="youtube" onClick={this.openTab} >
@@ -175,19 +157,19 @@ class Content extends Component {
                 </Tabs>
 
                 <Container fluid id="youtubeconTab" className="content-conTab" >
-                        {this.loadWebsite("youtube")}
+                        {this.displayWebsite("youtube")}
                 </Container>
 
                 <Container fluid id="redditconTab" className="content-conTab" style={{display: "none"}}>
-                        {this.loadWebsite("reddit")}
+                        {this.displayWebsite("reddit")}
                 </Container>
 
                 <Container fluid id="pinterestconTab" className="content-conTab" style={{display: "none"}}>
-                        {this.loadWebsite("pinterest")}
+                        {this.displayWebsite("pinterest")}
                 </Container>
 
                 <Container fluid id="favoritesconTab" className="content-conTab" style={{display: "none"}}>
-                        {this.loadWebsite("favorites")}
+                        {this.displayWebsite("favorites")}
                 </Container>
             </Container>
         )

@@ -8,7 +8,7 @@ class NavigationBar extends Component {
         super(props)
 
         this.state = {
-
+            loggedIn: false
         }
     }
     render() {
@@ -24,16 +24,27 @@ class NavigationBar extends Component {
 
                 <Navbar.Menu>
                     <Navbar.Container>
-                        <Navbar.Item href="/">Collection</Navbar.Item>
-                        <Navbar.Item href="/">Inspiration</Navbar.Item>
                         <Navbar.Item>
                             <Button color="info" onClick={this.props.addItemToggle}>Add Item</Button>
                         </Navbar.Item>
                     </Navbar.Container>
 
                     <Navbar.Container position="end">
-                        <Navbar.Item href="/">Profile</Navbar.Item>
-                        <Navbar.Item href="/">Log In</Navbar.Item>
+                        <Navbar.Item href="/">About</Navbar.Item>
+
+                        {this.state.loggedIn && (
+                            <Navbar.Item href="/">Sign Up</Navbar.Item>
+                        )}
+
+                        {this.state.loggedIn && (
+                            <Navbar.Item href="/">Log In</Navbar.Item>
+                        )}
+                        
+                        {!this.state.loggedIn && (
+                            <Navbar.Item href="/">Log out</Navbar.Item>
+                        )}
+                        
+
                     </Navbar.Container>
 
                 </Navbar.Menu>

@@ -9,7 +9,7 @@ class AccordionSection extends Component {
         onClick: PropTypes.func.isRequired
     }
 
-    onClick = () => {
+    onClick = (ev) => {
         this.props.onClick(this.props.label)
     }
 

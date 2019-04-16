@@ -21,7 +21,7 @@ class App extends Component {
     }
   }
 
-  selectTile = (tile) => {
+  sendToContent = (tile) => {
     this.setState({activeTile: tile})
   }
 
@@ -42,21 +42,21 @@ class App extends Component {
     return (
       <Container fluid >
         <NavigationBar addItemToggle={this.handleAddItemButton}/>
+        <Signup></Signup>
 
         {addItemToggle ? <NewItemForm /> : null}
 
         <Columns >
           <Columns.Column size="one-third" >
+            <Collection sendToContent={this.sendToContent}/>
+          </Columns.Column>
 
-              <Collection selectTile={this.selectTile}/>
-            </Columns.Column>
+          <Columns.Column size="two-thirds">
+            <Content activeTile={this.state.activeTile}/>
+          </Columns.Column>
+        </Columns>
+      </Container>
 
-            <Columns.Column size="two-thirds">
-              <Login activeTile={this.state.activeTile}/>
-            </Columns.Column>
-
-          </Columns>
-        </Container>
     );
   }
 }
