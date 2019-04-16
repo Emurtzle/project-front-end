@@ -9,7 +9,7 @@ class Collection extends Component {
     constructor(props) {
         super(props)
 
-        this.state ={
+        this.state = {
             items: [
                 {
                     name: "Blue Eagle",
@@ -54,13 +54,72 @@ class Collection extends Component {
                     rating: 5
                 }
             ],
-          current_user: localStorage.getItem("UserID"),
-          token: localStorage.getItem('Token'),
-            items: [],
-            activeTab: null,
+            current_user: localStorage.getItem("UserID"),
+            token: localStorage.getItem('Token'),
+            tiles: [],
             query: ""
         }
-      this.fetchCollection()
+        this.fetchCollection()
+    }
+
+    componentDidMount() {
+        this.loadTiles()
+    }
+
+    loadTiles = () => {
+        var temp = this.state.items.slice().map((item, index) => {
+            return {
+                category: item.makeup_type,
+                item: item,
+                active: false
+            }
+        })
+        this.setState({tiles: temp})
+    }
+
+    displayAllTiles = () => {
+        var temp = this.state.tiles.map((tile, index) => {
+            return (
+                <Fragment key={index}>
+                    <ItemCard
+                        item={tile.item}
+                        active={tile.active}
+                        selectTile= {this.selectTile} 
+                        sendToContent={this.props.sendToContent}
+                        key={index}
+                    />
+                </Fragment>
+            )
+        })
+        return temp
+    }
+
+    displayTiles = (category) => {
+        var temp = this.state.tiles.filter(tile => tile.category === category).map((tile, index) => {
+            return (
+                <Fragment key={index}>
+                    <ItemCard 
+                        item={tile.item}
+                        active={tile.active} 
+                        selectTile= {this.selectTile} 
+                        sendToContent={this.props.sendToContent} 
+                        key={index}
+                    />
+                </Fragment>
+            )
+        })
+        return temp
+    }
+
+    selectTile = (item) => {
+        var tempTile = this.state.tiles.slice().find(tile => tile.item.name === item.name)
+        var tempIndex = this.state.tiles.indexOf(tempTile)
+        var tempArr = this.state.tiles.slice()
+        for(var i = 0; i < tempArr.length; i++) {
+            tempArr[i].active = false
+        }
+        tempArr[tempIndex].active = true
+        this.setState({tiles: tempArr})
     }
 
     fetchCollection() {
@@ -76,22 +135,6 @@ class Collection extends Component {
       //pulling from database is working just need to publish to cards
     }
 
-    loadAllItems = () => {
-        return this.state.items.map((item, index) => (
-            <ItemCard item={item} key={index} selectTile={this.props.selectTile}/>
-        ))
-    }
-
-    loadItemCategory = (category) => {
-        return this.state.items.filter((item) => item.makeup_type === category).map((item, index) => (
-            <ItemCard item={item} key={index} selectTile={this.props.selectTile}/>
-        ))
-    }
-
-    handleActiveTileChange = (ev) => {
-
-    }
-
     openTab = (ev) => {
         var tabs = document.getElementsByClassName("content-colTab")
         var tabLinks = document.getElementsByClassName("colTab")
@@ -103,7 +146,6 @@ class Collection extends Component {
         }
         document.getElementById(`${ev.target.id}-colTab`).style.display = ""
         ev.target.parentNode.className += " is-active"
-
     }
 
     handleSearch = (ev) => {
@@ -127,92 +169,92 @@ class Collection extends Component {
                     <div label='All'>
                         <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadAllItems()}
+                                {this.displayAllTiles()}
                             </Tile>
                         </Tile>  
                     </div>
                     <div label='BB and CC Cream'>
                         <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("bb_cc_cream")}
+                                {this.displayTiles("bb_cc_cream")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Blush'>
                         <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("blush")}
+                                {this.displayTiles("blush")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Bronzer'>
                         <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("bronzer")}
+                                {this.displayTiles("bronzer")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Concealer'>
                         <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("concealer")}
+                                {this.displayTiles("concealer")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Contour'>
                         <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                            {this.loadItemCategory("contour")}
+                                {this.displayTiles("contour")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Eye Primer'>
                         <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("eye_primer")}
+                                {this.displayTiles("eye_primer")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Eyebrow'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("eyebrow")}
+                                {this.displayTiles("eyebrow")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Eyeliner'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("eyeliner")}
+                                {this.displayTiles("eyeliner")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Eyeshadow'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("eyeshadow")}
+                                {this.displayTiles("eyeshadow")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Face Primer'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("face_primer")}
+                                {this.displayTiles("face_primer")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='False Eyelashes'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("eye_primer")}
+                                {this.displayTiles("false_eyelashes")}
                             </Tile>
                         </Tile> 
-                        {this.loadItemCategory("false_eyelashes")}
+                        
                     </div>
                     <div label='Foundation'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("foundation")}
+                                {this.displayTiles("foundation")}
                             </Tile>
                         </Tile> 
                         
@@ -220,21 +262,21 @@ class Collection extends Component {
                     <div label='Highlighter'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                            {this.loadItemCategory("highlighter")}
+                                {this.displayTiles("highlighter")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Lips'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("lips")}
+                                {this.displayTiles("lips")}
                             </Tile>
                         </Tile> 
                     </div>
                     <div label='Mascara'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("mascara")}
+                                {this.displayTiles("mascara")}
                             </Tile>
                         </Tile> 
                         
@@ -242,7 +284,7 @@ class Collection extends Component {
                     <div label='Setting Powder'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("setting_powder")}
+                                {this.displayTiles("setting_powder")}
                             </Tile>
                         </Tile> 
                         
@@ -250,7 +292,7 @@ class Collection extends Component {
                     <div label='Setting Spray'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("setting_spray")}
+                                {this.displayTiles("setting_spray")}
                             </Tile>
                         </Tile> 
                         
@@ -258,7 +300,7 @@ class Collection extends Component {
                     <div label='Tined Moisturizer'>
                          <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">
-                                {this.loadItemCategory("tinted_moisturizer")}
+                                {this.displayTiles("tinted_moisturizer")}
                             </Tile>
                         </Tile>    
                     </div>
