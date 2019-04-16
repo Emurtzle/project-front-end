@@ -52,7 +52,7 @@ class App extends Component {
             </Columns.Column>
 
             <Columns.Column size="two-thirds">
-              <Content activeTile={this.state.activeTile}/>
+              <Login activeTile={this.state.activeTile}/>
             </Columns.Column>
 
           </Columns>

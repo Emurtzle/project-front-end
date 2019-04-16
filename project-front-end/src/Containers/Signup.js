@@ -41,8 +41,29 @@ class Signup extends Component {
         localStorage.setItem('UserID', json.user.id);
         localStorage.setItem('Token', json.token);
         localStorage.setItem('UserName', json.user.name);
+        this.handleCollection()
       })
       //store the token in local storage
+  }
+
+  handleCollection = (ev) => {
+    fetch('http://localhost:3000/collections', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('Token')}`
+    },
+    body: JSON.stringify({
+      collection: {
+        user_id: localStorage.getItem("UserID")
+      }
+    })
+  })
+    .then(r => r.json())
+    .then(json => {
+      localStorage.setItem('CollectionID', json.id);
+    })
   }
 
   render() {
@@ -63,7 +84,7 @@ class Signup extends Component {
         </Form.Field>
 
         <Form.Field >
-          <Button onClick={this.handleSubmit} color="primary">Login</Button>
+          <Button onClick={this.handleSubmit} color="primary">Signup</Button>
         </Form.Field>
 
       </Container>
