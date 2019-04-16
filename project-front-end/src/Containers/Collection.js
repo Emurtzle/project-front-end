@@ -60,13 +60,13 @@ class Collection extends Component {
 
     loadAllItems = () => {
         return this.state.items.map((item, index) => (
-            <ItemCard item={item} key={index} onClick={this.handleActiveTileChange}/>
+            <ItemCard item={item} key={index} selectTile={this.props.selectTile}/>
         ))
     }
 
     loadItemCategory = (category) => {
         return this.state.items.filter((item) => item.makeup_type === category).map((item, index) => (
-            <ItemCard item={item} key={index} onClick={this.handleActiveTileChange} />
+            <ItemCard item={item} key={index} selectTile={this.props.selectTile}/>
         ))
     }
 
@@ -245,9 +245,6 @@ class Collection extends Component {
                         </Tile>    
                     </div>
                 </Accordion>
-
-
-
             </Container>
         )
     }

@@ -148,6 +148,7 @@ class Content extends Component {
         return (
             <Container fluid className={"has-background-info"}>
                 <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
+                <Heading size={2}>Active Tile: {this.props.activeTile}</Heading>
                 
                 <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >  
                     <Tabs.Tab className="conTab is-active" id="youtube" onClick={this.openTab} >

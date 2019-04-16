@@ -79,6 +79,7 @@ class ItemCard extends Component {
     }
 
     toggle = () => {
+        this.props.selectTile(`${this.props.item.name} by ${this.props.item.brand}`)
         this.setState({active: !this.state.active})
     }
 
