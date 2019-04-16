@@ -54,8 +54,26 @@ class Collection extends Component {
                     rating: 5
                 }
             ],
+          current_user: localStorage.getItem("UserID"),
+          token: localStorage.getItem('Token'),
+            items: [],
+            activeTab: null,
             query: ""
         }
+      this.fetchCollection()
+    }
+
+    fetchCollection() {
+      //gotta send the token over
+      fetch((`http://localhost:3000/collections/${this.state.current_user}`), {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${this.state.token}`
+        }
+      })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      //pulling from database is working just need to publish to cards
     }
 
     loadAllItems = () => {
@@ -96,7 +114,7 @@ class Collection extends Component {
         return (
             <Container fluid className={"has-background-info"}>
                 <Heading className={"has-text-centered has-text-white"}>Collection</Heading>
-                
+
                 <Panel >
                     <Panel.Block>
                         <Form.Control>

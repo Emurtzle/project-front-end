@@ -5,6 +5,15 @@ import ContentCard from '../Components/ContentCard'
 
 const ActiveTabContent = (props) => <div>{props.content}</div>
 
+// let activeItem = 'Modern Renaissance'
+// this.fetchActive()
+//
+//   fetchActive() {
+//     fetch('https://www.reddit.com/r/MakeupAddiction/.json')
+//     .then(response => response.json())
+//     .then(items => console.log(items))
+//   }
+
 const tabList = [
     {
         name: "Youtube",
