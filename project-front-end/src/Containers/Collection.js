@@ -10,51 +10,9 @@ class Collection extends Component {
         super(props)
 
         this.state = {
-            items: [
-                {
-                    name: "Blue Eagle",
-                    brand: "Aspire",
-                    makeup_type: "eyeshadow",
-                    expiration: "Tuesday",
-                    rating: 4
-                },
-                {
-                    name: "Sparkle Planet",
-                    brand: "Lust Mechanic",
-                    makeup_type: "eyeliner",
-                    expiration: "Next Month",
-                    rating: 3
-                },
-                {
-                    name: "Butterfly Dust",
-                    brand: "Lust Mechanic",
-                    makeup_type: "foundation",
-                    expiration: "Next Week",
-                    rating: 5
-                },
-                {
-                    name: "City Nights",
-                    brand: "Sephora",
-                    makeup_type: "concealer",
-                    expiration: "Tomorrow",
-                    rating: 2
-                },
-                {
-                    name: "Spring Days",
-                    brand: "Ulta",
-                    makeup_type: "lip",
-                    expiration: "Thursday",
-                    rating: 1
-                },
-                {
-                    name: "Nightclub",
-                    brand: "Cover Girl",
-                    makeup_type: "mascara",
-                    expiration: "now",
-                    rating: 5
-                }
-            ],
+            items: [],
             current_user: localStorage.getItem("UserID"),
+            current_collection: localStorage.getItem("CollectionID"),
             token: localStorage.getItem('Token'),
             tiles: [],
             query: ""
@@ -84,7 +42,7 @@ class Collection extends Component {
                     <ItemCard
                         item={tile.item}
                         active={tile.active}
-                        selectTile= {this.selectTile} 
+                        selectTile= {this.selectTile}
                         sendToContent={this.props.sendToContent}
                         key={index}
                     />
@@ -98,11 +56,11 @@ class Collection extends Component {
         var temp = this.state.tiles.filter(tile => tile.category === category).map((tile, index) => {
             return (
                 <Fragment key={index}>
-                    <ItemCard 
+                    <ItemCard
                         item={tile.item}
-                        active={tile.active} 
-                        selectTile= {this.selectTile} 
-                        sendToContent={this.props.sendToContent} 
+                        active={tile.active}
+                        selectTile= {this.selectTile}
+                        sendToContent={this.props.sendToContent}
                         key={index}
                     />
                 </Fragment>
@@ -132,11 +90,32 @@ class Collection extends Component {
       })
       .then(response => response.json())
       .then(json => {
-        //localStorage.setItem('CollectionID', json.items)
-        console.log(localStorage.getItem('CollectionID'));
+        localStorage['CollectionID'] = json.items[0].collection_id;
+      })
+      this.fetchItems()
+    }
 
+    fetchItems() {
+      fetch((`http://localhost:3000/items/${this.state.current_collection}`), {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${this.state.token}`
+        }
+      })
+      .then(response => response.json())
+      .then(json => {
+        this.setItems(json)
       })
       //pulling from database is working just need to publish to cards
+    }
+
+    setItems(items) {
+      items.forEach(item => {
+        this.state.items.push(item)
+        this.setState({
+          items: this.state.items
+        })
+      })
     }
 
     openTab = (ev) => {
@@ -252,7 +231,7 @@ class Collection extends Component {
                             <Tile size={12} vertical kind="parent">
                                 {this.displayTiles("false_eyelashes")}
                             </Tile>
-                        </Tile> 
+                        </Tile>
                     </div>
                     <div label='Foundation'>
                          <Tile kind="ancestor" vertical>

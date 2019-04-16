@@ -42,8 +42,6 @@ class Login extends Component {
         localStorage.setItem('UserID', json.user.id);
         localStorage.setItem('Token', json.token);
         localStorage.setItem('UserName', json.user.name);
-        console.log(json)
-
       })
   }
 
