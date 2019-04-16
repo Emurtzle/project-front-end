@@ -16,8 +16,13 @@ class App extends Component {
     super(props)
 
     this.state = {
-      addItemFormOpen: false
+      addItemFormOpen: false,
+      activeTile: ""
     }
+  }
+
+  selectTile = (tile) => {
+    this.setState({activeTile: tile})
   }
 
   handleAddItemButton = () => {
@@ -42,11 +47,12 @@ class App extends Component {
 
         <Columns >
           <Columns.Column size="one-third" >
-              <Collection/>
+
+              <Collection selectTile={this.selectTile}/>
             </Columns.Column>
 
             <Columns.Column size="two-thirds">
-              <Login />
+              <Content activeTile={this.state.activeTile}/>
             </Columns.Column>
 
           </Columns>
