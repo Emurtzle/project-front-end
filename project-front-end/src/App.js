@@ -5,6 +5,8 @@ import Collection from './Containers/Collection'
 import Content from './Containers/Content'
 import Login from './Containers/Login'
 import Signup from './Containers/Signup'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 import { Columns, Container, Button } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
@@ -42,9 +44,13 @@ class App extends Component {
     return (
       <Container fluid >
         <NavigationBar addItemToggle={this.handleAddItemButton}/>
-        <Signup></Signup>
 
         {addItemToggle ? <NewItemForm /> : null}
+
+        <Router>
+          <Route exact path='/signup' component={() => <Signup />}/>
+          <Route exact path='/login' component={() => <Login />}/>
+        </Router>
 
         <Columns >
           <Columns.Column size="one-third" >
