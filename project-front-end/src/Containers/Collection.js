@@ -50,7 +50,7 @@ class Collection extends Component {
     }
 
     displayTiles = (category) => {
-        var temp = this.state.tiles.filter(tile => tile.category === category).map((tile, index) => {
+        var temp = this.state.tiles.filter(tile => tile.category.includes(category)).map((tile, index) => {
             return (
                 <Fragment key={index}>
                     <ItemCard
@@ -87,9 +87,12 @@ class Collection extends Component {
       })
       .then(response => response.json())
       .then(json => {
+        
+
         localStorage['CollectionID'] = json.items[0].collection_id;
         this.fetchItems()
-      })
+        })
+
     }
 
     fetchItems() {

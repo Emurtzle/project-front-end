@@ -6,6 +6,7 @@ import Collection from './Containers/Collection'
 import Content from './Containers/Content'
 import Login from './Containers/Login'
 import Signup from './Containers/Signup'
+
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
@@ -22,7 +23,7 @@ class App extends Component {
       loggedIn: false
     }
   }
-  
+
   componentDidMount() {
     if (!localStorage.getItem('UserID')) {
         this.setState({loggedIn: false})

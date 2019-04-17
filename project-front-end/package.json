@@ -6,6 +6,7 @@
     "bulma": "^0.7.4",
     "bulma-calendar": "^6.0.4",
     "bulma-extensions": "^6.2.4",
+    "google-images-url": "^1.0.2",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-bulma-components": "^2.3.0",

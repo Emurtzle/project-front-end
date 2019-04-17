@@ -68,8 +68,20 @@ class NewItemForm extends Component {
   }
 
   setExp(year, month, day) {
+    let adjMonth = ''
+    let adjDay = ''
+    if (month < 10) {
+      adjMonth = `0${month}`
+    } else {
+      adjMonth = month
+    }
+    if (day < 10) {
+      adjDay = `0${day}`
+    } else {
+      adjDay = day
+    }
     this.setState({
-      expiration: `${month}/${day}/${year}`
+      expiration: `${year}/${adjMonth}/${adjDay}`
     }, () => {
       console.log(this.state)
       this.postItem()
@@ -77,6 +89,7 @@ class NewItemForm extends Component {
   }
 
   handleSubmit = (ev) => {
+
     this.setExpiration()
     //post to database
 
@@ -148,14 +161,14 @@ class NewItemForm extends Component {
               <option value="blush">Blush</option>
               <option value="bronzer">Bronzer</option>
               <option value="concealer">Concealer</option>
-              <option value="cream_contour">Contour</option>
-              <option value="powder_contour">Contour</option>
+              <option value="cream_contour">Cream Contour</option>
+              <option value="powder_contour">Powder Contour</option>
               <option value="eye_primer">Eye Primer</option>
               <option value="eyebrow">Eyebrow</option>
-              <option value="liquid_eyeliner">Eyeliner</option>
-              <option value="pencil_eyeliner">Eyeliner</option>
-              <option value="cream_eyeshadow">Eyeshadow</option>
-              <option value="powder_eyeshadow">Eyeshadow</option>
+              <option value="liquid_eyeliner">Liquid Eyeliner</option>
+              <option value="pencil_eyeliner">Pencil Eyeliner</option>
+              <option value="cream_eyeshadow">Cream Eyeshadow</option>
+              <option value="powder_eyeshadow">Powder Eyeshadow</option>
               <option value="face_primer">Face Primer</option>
               <option value="foundation">Foundation</option>
               <option value="highlighter">Highlighter</option>

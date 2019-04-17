@@ -38,8 +38,9 @@ class Signup extends Component {
     })
       .then(r => r.json())
       .then(json => {
+        console.log(json)
         localStorage.setItem('UserID', json.user.id);
-        localStorage.setItem('Token', json.token);
+        localStorage.setItem('Token', json.jwt);
         localStorage.setItem('UserName', json.user.name);
         this.handleCollection()
       })
@@ -63,6 +64,8 @@ class Signup extends Component {
     .then(r => r.json())
     .then(json => {
       localStorage.setItem('CollectionID', json.id);
+      console.log('insignup')
+
     })
   }
 
