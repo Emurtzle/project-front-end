@@ -18,7 +18,7 @@ class AccordionSection extends Component {
 
         return(
             <div style={{
-                background: isOpen ? '#FF5A51' : '#FF9B6D',
+                background: isOpen ? '#FF7C60' : '#FF9B6D',
                 border: '1px solid #FF9B6D',
                 padding: '5px 10px',
                 color: isOpen ? '#000000': '#F2F1DC'
@@ -33,8 +33,8 @@ class AccordionSection extends Component {
 
                 {isOpen && (
                     <div style={{
-                        background: '#F2C2C6',
-                        border: '2px solid #FF9B6D',
+                        background: '#FF9B6D',
+                        border: '10px solid #FF9B6D',
                         marginTop: 10
                     }}>
                         {this.props.children}

@@ -135,7 +135,7 @@ class Collection extends Component {
     render() {
         return (
             <Container fluid style={{background: '#FF7C60'}}>
-                <Heading className={"has-text-centered"} style={{color: '#F2F1DC'}}>Collection</Heading>
+                <Heading className={"has-text-centered"} size={2} style={{color: '#F2F1DC'}}>Collection</Heading>
 
                 <Accordion >
                     <div label='All'>

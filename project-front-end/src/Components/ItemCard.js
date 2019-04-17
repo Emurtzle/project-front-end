@@ -109,13 +109,13 @@ class ItemCard extends Component {
                 vertical
                 kind="child"
                 onClick={this.toggle}
-                className={active ? "has-background-success" : "has-background-info"}
                 style={{
-                    border: active ? '5px solid #ffff00' : ''
+                    background: active ? '#F2F1DC' : "",
+                    border: active ? '5px solid #FF7C60' : ''
                 }}
             >
                 <Tile size={12}>
-                    <Tile size={8}>
+                    <Tile size={9}>
                         <Tile >
                             <Image size={48} src={icon} alt="Makeup Icon" />
                             <Tile vertical>
@@ -125,7 +125,7 @@ class ItemCard extends Component {
                         </Tile>
                     </Tile>
 
-                    <Tile size={active ? 3 : 4}>
+                    <Tile size={active ? 2 : 3}>
                         <Tile vertical>
                             <Heading size={6}>Expires</Heading>
                             <Heading subtitle size={6}>{this.displayExpiration()}</Heading>
@@ -134,7 +134,8 @@ class ItemCard extends Component {
 
                     {active && (
                         <Tile size={1}>
-                            <button className="delete is-medium"/>
+                            <Button classNAme/>
+                            <button className="delete is-medium" style={{background: 'red'}}/>
                         </Tile>
                     )}
 

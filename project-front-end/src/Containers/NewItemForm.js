@@ -21,8 +21,6 @@ class NewItemForm extends Component {
 
   }
 
-  //post new item to collection
-
 
   handleChange = (ev) => {
     const value = ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value
@@ -91,8 +89,12 @@ class NewItemForm extends Component {
   handleSubmit = (ev) => {
 
     this.setExpiration()
-    //post to database
+    this.props.toggle()
 
+  }
+
+  handleCancel = () => {
+    this.props.toggle()
   }
 
   postItem() {
@@ -226,10 +228,7 @@ class NewItemForm extends Component {
             <Button onClick={this.handleSubmit} color="primary">Add To Collection</Button>
           </Form.Control>
           <Form.Control>
-            <Button color="primary">Add Another</Button>
-          </Form.Control>
-          <Form.Control>
-            <Button color="link">Cancel</Button>
+            <Button onClick={this.handleCancel} color="link">Cancel</Button>
           </Form.Control>
         </Form.Field>
 
