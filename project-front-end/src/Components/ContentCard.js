@@ -29,25 +29,28 @@ class ContentCard extends Component {
     //scrape https://www.google.com/search?&q=site%3Ayoutube.com+'URSEaRChehere''
         let {title, creator, thumbnail, url} = this.props.content
         return (
-            <Tile kind="ancestor" className="has-background-primary">
-                <Tile size={2}>
-                  <YouTube
-                    videoId="2g811Eo7K8U"
-                    opts={opts}
-                    onReady={this._onReady}
-                    />
-                </Tile>
+            // <Tile kind="ancestor" className="has-background-primary">
+            //     <Tile size={2}>
+            //       <YouTube
+            //         videoId="2g811Eo7K8U"
+            //         opts={opts}
+            //         onReady={this._onReady}
+            //         />
+            //     </Tile>
 
-                <Tile kind="parent" size={8} vertical>
-                    <Heading>{title}</Heading>
-                    <Heading size={4}subtitle>{creator}</Heading>
-                </Tile>
+            //     <Tile kind="parent" size={8} vertical>
+            //         <Heading>{title}</Heading>
+            //         <Heading size={4}subtitle>{creator}</Heading>
+            //     </Tile>
 
-                <Tile kind="parent" size={2} vertical>
-                        <Button fullwidth color="info">Favorite</Button>
-                        <Button fullwidth color="info">Visit</Button>
-                </Tile>
-            </Tile>
+            //     <Tile kind="parent" size={2} vertical>
+            //             <Button fullwidth color="info">Favorite</Button>
+            //             <Button fullwidth color="info">Visit</Button>
+            //     </Tile>
+            // </Tile>
+            <div>
+                <p>Content Card</p>
+            </div>
         )
     }
 }

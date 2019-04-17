@@ -47,11 +47,11 @@ class Home extends Component {
             <Fragment>
                 {loggedIn && (
                     <Columns >
-                        <Columns.Column size="one-half" >
+                        <Columns.Column size="half" >
                             <Collection sendToContent={this.sendToContent}/>
                         </Columns.Column>
 
-                        <Columns.Column size="one-half">
+                        <Columns.Column size="half">
                             <Content activeTile={this.state.activeTile}/>
                         </Columns.Column>
                     </Columns>
