@@ -23,19 +23,6 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        if (!localStorage.getItem('UserID')) {
-            this.setState({loggedIn: false})
-        } else {
-            this.setState({loggedIn: true})
-        }
-    }
-
-    setLogIn = () => {
-        this.setState({loggedIn: true})
-    }
-
-    setLogOff = () => {
-        this.setState({loggedIn: false})
     }
 
     sendToContent = (tile) => {
@@ -55,7 +42,7 @@ class Home extends Component {
       }
 
     render() {
-        let loggedIn = this.state.loggedIn
+        let loggedIn = this.props.loggedIn
         return (
             <Fragment>
                 {loggedIn && (
@@ -72,7 +59,7 @@ class Home extends Component {
 
                 {!loggedIn && (
                     <Fragment>
-                        <Login setLogIn={this.setLogIn}/>
+                        <Login setLogIn={this.props.setLogIn}/>
                     </Fragment>
                 )}
             </Fragment>

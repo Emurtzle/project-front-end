@@ -22,6 +22,23 @@ class App extends Component {
       loggedIn: false
     }
   }
+  
+  componentDidMount() {
+    if (!localStorage.getItem('UserID')) {
+        this.setState({loggedIn: false})
+    } else {
+        this.setState({loggedIn: true})
+    }
+  }
+
+  setLogIn = () => {
+    this.setState({loggedIn: true})
+}
+
+  setLogOut = () => {
+      this.setState({loggedIn: false})
+  }
+
 
   sendToContent = (tile) => {
     this.setState({activeTile: tile})
@@ -41,14 +58,15 @@ class App extends Component {
 
   render() {
     const addItemToggle= this.state.addItemFormOpen;
+    let loggedIn = this.state.loggedIn
     return (
       <Container fluid >
-        <NavigationBar addItemToggle={this.handleAddItemButton} logOut={this.logOut}/>
+        <NavigationBar setLogIn={this.setLogIn} setlogOut={this.setLogOut} loggedIn={loggedIn} addItemToggle={this.handleAddItemButton}/>
 
         {addItemToggle ? <NewItemForm /> : null}
 
         <Router>
-          <Route exact path="/" component={() => <Home />} />
+          <Route exact path="/" component={() => <Home loggedIn={loggedIn} setLogIn={this.setLogIn}/>} />
           <Route exact path='/signup' component={() => <Signup />} />
           <Route exact path='/login' component={() => <Login />} />
         </Router>
