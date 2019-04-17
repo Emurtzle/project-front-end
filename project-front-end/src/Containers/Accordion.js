@@ -28,7 +28,8 @@ class Accordion extends Component {
 
         return (
             <div style={{ 
-                border: '2px solid #008f68'
+                border: '2px solid #FF9B6D',
+                background: '#FF9B6D'
             }}>
                 {children.map((child, index) => (
                     <AccordionSection

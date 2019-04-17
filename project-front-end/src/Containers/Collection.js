@@ -13,8 +13,7 @@ class Collection extends Component {
             items: [],
             current_user: localStorage.getItem("UserID"),
             token: localStorage.getItem('Token'),
-            tiles: [],
-            query: ""
+            tiles: []
         }
     }
 
@@ -130,24 +129,12 @@ class Collection extends Component {
         ev.target.parentNode.className += " is-active"
     }
 
-    handleSearch = (ev) => {
-        this.setState({query: ev.target.value})
-    }
-
     render() {
         return (
-            <Container fluid className={"has-background-info"}>
-                <Heading className={"has-text-centered has-text-white"}>Collection</Heading>
+            <Container fluid style={{background: '#FF7C60'}}>
+                <Heading className={"has-text-centered"} style={{color: '#F2F1DC'}}>Collection</Heading>
 
-                <Panel >
-                    <Panel.Block>
-                        <Form.Control>
-                            <Form.Input onChange={this.handleSearch} size="small" type="text" placeholder="Search" value={this.state.query} />
-                        </Form.Control>
-                    </Panel.Block>
-                </Panel>
-
-                <Accordion>
+                <Accordion >
                     <div label='All'>
                         <Tile kind="ancestor" vertical>
                             <Tile size={12} vertical kind="parent">

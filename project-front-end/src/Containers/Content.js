@@ -132,8 +132,8 @@ class Content extends Component {
     render () {
       this.fetchActive()
         return (
-            <Container fluid className={"has-background-info"}>
-                <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
+            <Container fluid style={{background: '#FF9B6D'}}>
+                <Heading className={"has-text-centered"} style={{color: '#F2F1DC'}}>Inspiration</Heading>
                 <Heading size={2}>Active Tile: {this.props.activeTile.name}</Heading>
 
                 <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >

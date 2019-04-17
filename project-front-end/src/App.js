@@ -62,9 +62,9 @@ class App extends Component {
     return (
       <Container fluid >
         <NavigationBar setLogIn={this.setLogIn} setlogOut={this.setLogOut} loggedIn={loggedIn} addItemToggle={this.handleAddItemButton}/>
-
+        <br/>
         {addItemToggle ? <NewItemForm /> : null}
-
+        <br/>
         <Router>
           <Route exact path="/" component={() => <Home loggedIn={loggedIn} setLogIn={this.setLogIn}/>} />
           <Route exact path='/signup' component={() => <Signup />} />

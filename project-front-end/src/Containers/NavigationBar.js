@@ -18,7 +18,7 @@ class NavigationBar extends Component {
     }
     render() {
         return (
-            <Navbar color={"primary"} fixed={"top"} active={false} transparent={false}>
+            <Navbar fixed={"top"} active={false} transparent={false} style={{background: '#FF5A51'}}>
                 
                 <Navbar.Brand>
                     <Navbar.Item renderAs="a" href="/">
@@ -29,16 +29,16 @@ class NavigationBar extends Component {
 
                 <Navbar.Menu>
                     <Navbar.Container>
-                        <Navbar.Item onClick={this.props.addItemToggle}>
+                        <Navbar.Item onClick={this.props.addItemToggle} style={{color: '#F2F1DC'}}>
                             Add Item
                         </Navbar.Item>
                     </Navbar.Container>
 
                     <Navbar.Container position="end">
-                        <Navbar.Item href="/">About</Navbar.Item>
+                        <Navbar.Item href="/" style={{color: '#F2F1DC'}}>About</Navbar.Item>
                         
                         {this.props.loggedIn && (
-                            <Navbar.Item href="/" onClick={this.handleLogOutClick}>Log out</Navbar.Item>
+                            <Navbar.Item href="/" onClick={this.handleLogOutClick} style={{color: '#F2F1DC'}}>Log out</Navbar.Item>
                         )}
                         
 
