@@ -5,20 +5,13 @@ import ContentCard from '../Components/ContentCard'
 
 const ActiveTabContent = (props) => <div>{props.content}</div>
 
-// let activeItem = 'Modern Renaissance'
-// this.fetchActive()
-//
-//   fetchActive() {
-//     fetch('https://www.reddit.com/r/MakeupAddiction/.json')
-//     .then(response => response.json())
-//     .then(items => console.log(items))
-//   }
 
 class Content extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            activeTile: this.props.activeTile.name,
             activeTab: null,
             youtube: [
                 {
@@ -60,26 +53,7 @@ class Content extends Component {
                     thumbnail: null
                 }
             ],
-            pinterest: [
-                {
-                    title: "Do People Use This Anymore?",
-                    creator: "Bob Ross",
-                    url: "Go here yo!",
-                    thumbnail: null
-                },
-                {
-                    title: "Does The API Even Work?",
-                    creator: "Bob Ross",
-                    url: "Go here yo!",
-                    thumbnail: null
-                },
-                {
-                    title: "Should We Support This?",
-                    creator: "Bob Ross",
-                    url: "Go here yo!",
-                    thumbnail: null
-                }
-            ],
+
             favorites: [
                 {
                     title: "Man Bob Ross Sure is Active",
@@ -102,10 +76,30 @@ class Content extends Component {
             ]
         }
     }
+
+
+
+    fetchActive() {
+      console.log(`https://www.reddit.com/r/MakeupAddiction/search.json?q=${this.props.activeTile.name}&restrict_sr=1`)
+      fetch(`https://www.reddit.com/r/MakeupAddiction/search.json?q=${this.props.activeTile.name}&restrict_sr=1`)
+        .then(response => response.json())
+        .then(items => {
+          this.findThumbnails(items)
+        })
+    }
+
+    findThumbnails = (items) => {
+      let itemsArray = items.data.children
+      console.log(itemsArray)
+      let itemThumbnails = itemsArray.filter(item => item.data.thumbnail !== 'self')
+      console.log(itemThumbnails)
+    }
+
     // youtube, reddit or pinterest
     displayWebsite = (website) => {
         return this.state[website].map((content, index) => (
             <ContentCard content={content} key={index} />
+            
         ))
     }
 
@@ -136,20 +130,18 @@ class Content extends Component {
     }
 
     render () {
+      this.fetchActive()
         return (
             <Container fluid className={"has-background-info"}>
                 <Heading className={"has-text-centered has-text-white"}>Inspiration</Heading>
                 <Heading size={2}>Active Tile: {this.props.activeTile.name}</Heading>
-                
-                <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >  
+
+                <Tabs align="centered" fullwidth={true} size="medium" type="toggle" >
                     <Tabs.Tab className="conTab is-active" id="youtube" onClick={this.openTab} >
                         Youtube
                     </Tabs.Tab>
                     <Tabs.Tab className="conTab" id="reddit" onClick={this.openTab}>
                         Reddit
-                    </Tabs.Tab>
-                    <Tabs.Tab className="conTab" id="pinterest" onClick={this.openTab}>
-                        Pinterest
                     </Tabs.Tab>
                     <Tabs.Tab className="conTab" id="favorites" onClick={this.openTab}>
                         Favorites
@@ -164,13 +156,10 @@ class Content extends Component {
                         {this.displayWebsite("reddit")}
                 </Container>
 
-                <Container fluid id="pinterestconTab" className="content-conTab" style={{display: "none"}}>
-                        {this.displayWebsite("pinterest")}
-                </Container>
-
                 <Container fluid id="favoritesconTab" className="content-conTab" style={{display: "none"}}>
                         {this.displayWebsite("favorites")}
                 </Container>
+
             </Container>
         )
     }

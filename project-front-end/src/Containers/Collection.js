@@ -94,7 +94,6 @@ class Collection extends Component {
     }
 
     fetchItems() {
-        console.log(localStorage.getItem('CollectionID'))
       fetch((`http://localhost:3000/items/${localStorage.getItem('CollectionID')}`), {
         method: 'GET',
         headers: {
@@ -103,7 +102,6 @@ class Collection extends Component {
       })
       .then(response => response.json())
       .then(json => {
-          console.log(json)
         this.setItems(json)
         this.loadTiles()
       })
