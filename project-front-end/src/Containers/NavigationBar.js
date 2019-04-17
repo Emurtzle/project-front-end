@@ -11,6 +11,11 @@ class NavigationBar extends Component {
             loggedIn: false
         }
     }
+
+    handleLogOutClick = () => {
+        this.props.setlogOut()
+        localStorage.clear();
+    }
     render() {
         return (
             <Navbar color={"primary"} fixed={"top"} active={false} transparent={false}>
@@ -24,24 +29,16 @@ class NavigationBar extends Component {
 
                 <Navbar.Menu>
                     <Navbar.Container>
-                        <Navbar.Item>
-                            <Button color="info" onClick={this.props.addItemToggle}>Add Item</Button>
+                        <Navbar.Item onClick={this.props.addItemToggle}>
+                            Add Item
                         </Navbar.Item>
                     </Navbar.Container>
 
                     <Navbar.Container position="end">
                         <Navbar.Item href="/">About</Navbar.Item>
-
-                        {this.state.loggedIn && (
-                            <Navbar.Item href="/">Sign Up</Navbar.Item>
-                        )}
-
-                        {this.state.loggedIn && (
-                            <Navbar.Item href="/">Log In</Navbar.Item>
-                        )}
                         
-                        {!this.state.loggedIn && (
-                            <Navbar.Item href="/">Log out</Navbar.Item>
+                        {this.props.loggedIn && (
+                            <Navbar.Item href="/" onClick={this.handleLogOutClick}>Log out</Navbar.Item>
                         )}
                         
 

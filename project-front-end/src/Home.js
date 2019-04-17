@@ -22,12 +22,7 @@ class Home extends Component {
           }
     }
 
-    setLogIn = () => {
-        this.setState({loggedIn: true})
-    }
-
-    setLogOff = () => {
-        this.setState({loggedIn: false})
+    componentDidMount() {
     }
 
     sendToContent = (tile) => {
@@ -47,7 +42,7 @@ class Home extends Component {
       }
 
     render() {
-        let loggedIn = this.state.loggedIn
+        let loggedIn = this.props.loggedIn
         return (
             <Fragment>
                 {loggedIn && (
@@ -64,7 +59,7 @@ class Home extends Component {
 
                 {!loggedIn && (
                     <Fragment>
-                        <Login setLogIn={this.setLogIn}/>
+                        <Login setLogIn={this.props.setLogIn}/>
                     </Fragment>
                 )}
             </Fragment>

@@ -23,7 +23,7 @@ class OpenModal extends Component {
     render() {
         return(
             <div>
-
+                <
             </div>
         )
     }
