@@ -22,6 +22,14 @@ class Home extends Component {
           }
     }
 
+    componentDidMount() {
+        if (!localStorage.getItem('UserID')) {
+            this.setState({loggedIn: false})
+        } else {
+            this.setState({loggedIn: true})
+        }
+    }
+
     setLogIn = () => {
         this.setState({loggedIn: true})
     }

@@ -43,7 +43,7 @@ class App extends Component {
     const addItemToggle= this.state.addItemFormOpen;
     return (
       <Container fluid >
-        <NavigationBar addItemToggle={this.handleAddItemButton}/>
+        <NavigationBar addItemToggle={this.handleAddItemButton} logOut={this.logOut}/>
 
         {addItemToggle ? <NewItemForm /> : null}
 
