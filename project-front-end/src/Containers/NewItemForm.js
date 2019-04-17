@@ -18,6 +18,7 @@ class NewItemForm extends Component {
       expiration: "",
       purchase_date: ""
     }
+
   }
 
   //post new item to collection
@@ -44,12 +45,8 @@ class NewItemForm extends Component {
 
     if (increment < 12) {
       if (increment < monthsLeft) {
-        console.log(monthsLeft)
-        console.log(increment)
         let newMonth = month + increment
         this.setExp(year, newMonth, day)
-
-        console.log(newMonth)
       } else {
         let newMonth = Math.round((month + increment/12))
         let newYear = year + 1
@@ -73,32 +70,43 @@ class NewItemForm extends Component {
   setExp(year, month, day) {
     this.setState({
       expiration: `${month}/${day}/${year}`
+    }, () => {
+      console.log(this.state)
+      this.postItem()
     })
   }
 
   handleSubmit = (ev) => {
     this.setExpiration()
     //post to database
-  //   fetch('http://localhost:3000/items', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     Accept: 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     item: {
-  //       collection: //need dat collection id
-  //       name: this.state.name,
-  //       brand: this.state.brand,
-  //       makeup_type: this.state.makeup_type,
-  //       purchase_date: this.state.purchase_date,
-  //       notes: this.state.notes,
-  //       rating: this.state.rating,
-  //     }
-  //   })
-  // })
-  //   .then(r => r.json())
-  //   .then(json =>
+
+  }
+
+  postItem() {
+    let currentCollection = localStorage.getItem("CollectionID")
+
+    fetch('http://localhost:3000/items', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${this.state.token}`
+    },
+    body: JSON.stringify({
+      item: {
+        collection_id: currentCollection,
+        name: this.state.name,
+        brand: this.state.brand,
+        makeup_type: this.state.makeup_type,
+        purchase_date: this.state.purchase_date,
+        notes: this.state.notes,
+        rating: this.state.rating,
+        expiration: this.state.expiration
+      }
+    })
+  })
+    .then(r => r.json())
+    .then(json => console.log(json))
   }
 
   setExpiration() {
@@ -127,7 +135,7 @@ class NewItemForm extends Component {
   }
 
   render() {
-    const { makeup_type, name, brand, rating, purchase_date, notes } = this.state
+    const { makeup_type, name, brand, rating, purchase_date, notes, expiration } = this.state
 
     return (
       <Container fluid>

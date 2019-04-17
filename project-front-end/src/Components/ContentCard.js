@@ -16,10 +16,10 @@ class ContentCard extends Component {
 
     render() {
       const opts = {
-      height: '390',
-      width: '640',
+      height: '195',
+      width: '320',
       playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 1
+        //autoplay: 1
       }
     };
 

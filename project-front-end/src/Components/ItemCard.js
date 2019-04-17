@@ -42,16 +42,20 @@ class ItemCard extends Component {
                 "bronzer": bronzerImg,
                 "brush": brushImg,
                 "concealer": concealerImg,
-                "contour": contourImg,
+                "cream_contour": contourImg,
+                "powder_contour": contourImg,
+
                 "eye_primer": eye_primerImg,
                 "eyebrow": eyebrowImg,
-                "eyeliner": eyelinerImg,
-                "eyeshadow": eyeshadowImg,
+                "liquid_eyeliner": eyelinerImg,
+                "pencil_eyeliner": eyelinerImg,
+                "powder_eyeshadow": eyeshadowImg,
+                "cream_eyeshadow": eyeshadowImg,
                 "face_primer": face_primerImg,
                 "false_eyelashes": false_eyelashesImg,
                 "foundation": foundationImg,
                 "highlighter": highlighterImg,
-                "lip": lipImg,
+                "lip_product": lipImg,
                 "makeup": makeupIcon,
                 "mascara": mascaraImg,
                 "setting_powder": setting_powderImg,
@@ -59,7 +63,7 @@ class ItemCard extends Component {
                 "tinted_moisturizer": tinted_moisturizerImg
             }
         )
-        
+
     }
 
     componentDidMount() {
@@ -82,10 +86,18 @@ class ItemCard extends Component {
         this.props.sendToContent(this.props.item)
         this.props.selectTile(this.props.item)
     }
-    
+
     displayNotes = () => {
-        
+
     }
+
+    displayExpiration() {
+      let year = this.props.item.expiration.slice(0, 4)
+      let month = this.props.item.expiration.slice(5, 7)
+      let day = this.props.item.expiration.slice(8, 10)
+      let newDate =  `${month}/${day}/${year}`
+      return newDate
+     }
 
     render() {
         let { name, brand, notes, rating, expiration } = this.props.item
@@ -93,16 +105,16 @@ class ItemCard extends Component {
         let { icon } = this.state
 
         return (
-            <Tile 
+            <Tile
                 vertical
                 kind="child"
-                onClick={this.toggle} 
-                className={active ? "has-background-success" : "has-background-info"} 
+                onClick={this.toggle}
+                className={active ? "has-background-success" : "has-background-info"}
                 style={{
                     border: active ? '5px solid #ffff00' : ''
                 }}
             >
-                <Tile size={12}>   
+                <Tile size={12}>
                     <Tile size={8}>
                         <Tile >
                             <Image size={48} src={icon} alt="Makeup Icon" />
@@ -116,7 +128,7 @@ class ItemCard extends Component {
                     <Tile size={active ? 3 : 4}>
                         <Tile vertical>
                             <Heading size={6}>Expires</Heading>
-                            <Heading subtitle size={6}>{expiration}</Heading>
+                            <Heading subtitle size={6}>{this.displayExpiration()}</Heading>
                         </Tile>
                     </Tile>
 
@@ -125,7 +137,7 @@ class ItemCard extends Component {
                             <button className="delete is-medium"/>
                         </Tile>
                     )}
-                    
+
 
                 </Tile>
                     <Tile size={12}>

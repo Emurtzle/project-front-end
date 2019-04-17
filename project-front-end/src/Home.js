@@ -28,11 +28,11 @@ class Home extends Component {
     sendToContent = (tile) => {
         this.setState({activeTile: tile})
       }
-    
+
     handleAddItemButton = () => {
         this.toggleAddItemForm();
       }
-    
+
     toggleAddItemForm = () => {
         if (this.state.addItemFormOpen === false) {
           this.setState({addItemFormOpen: true})
@@ -47,11 +47,11 @@ class Home extends Component {
             <Fragment>
                 {loggedIn && (
                     <Columns >
-                        <Columns.Column size="one-third" >
+                        <Columns.Column size="one-half" >
                             <Collection sendToContent={this.sendToContent}/>
                         </Columns.Column>
 
-                        <Columns.Column size="two-thirds">
+                        <Columns.Column size="one-half">
                             <Content activeTile={this.state.activeTile}/>
                         </Columns.Column>
                     </Columns>
@@ -63,7 +63,7 @@ class Home extends Component {
                     </Fragment>
                 )}
             </Fragment>
-            
+
         )
     }
 }
