@@ -3,8 +3,6 @@ import { Container, Heading, Tabs, Button } from 'react-bulma-components'
 import 'react-bulma-components/dist/react-bulma-components.min.css'
 import ContentCard from '../Components/ContentCard'
 
-const ActiveTabContent = (props) => <div>{props.content}</div>
-
 
 class Content extends Component {
     constructor(props) {
@@ -16,13 +14,9 @@ class Content extends Component {
         }
     }
 
-    loadContent = () => {
-        console.log("I am here")
+    componentDidUpdate() {
         if (this.props.activeTile) {
-            console.log("Made it!")
             this.fetchActive()
-        } else {
-            
         }
     }
 
@@ -31,28 +25,29 @@ class Content extends Component {
       fetch(`https://www.reddit.com/r/MakeupAddiction/search.json?q=${this.props.activeTile.name}&restrict_sr=1`)
         .then(response => response.json())
         .then(items => {
-            this.setState({items: items}, () => {
-                this.loadTiles()
-            })
-            this.findThumbnails(items)
+            document.getElementById('ConContainer').innerHTML = ""
+            for (var i = 0; i < items.data.children.length; i++) {
+
+                var div = document.createElement('div')
+                div.className = "tile is-parent is-vertical"
+                div.style.backgroundColor = "#CB59FF"
+                // div.style.border = 
+
+                var h1Title = document.createElement('h1')
+                h1Title.className = "title is-5"
+                h1Title.textContent = items.data.children[i].data.title
+                
+                var h1Creator = document.createElement('h1')
+                h1Creator.className = "subtitle is-5"
+                h1Creator.textContent = "by " + items.data.children[i].data.author
+                
+                div.appendChild(h1Title)
+                div.appendChild(h1Creator)
+
+
+                document.getElementById('ConContainer').appendChild(div)
+            }
         })
-    }
-
-    loadTiles = () => {
-        var temp = this.state.items.data.children.map((item, index) => {
-            return <ContentCard content={item} key={index}/>
-        })
-
-        document.getElementById('ConContainer')
-
-        var container = document.getElementById("ConContainer");
-        while (container.firstChild) {
-            container.removeChild(container.firstChild);
-        }
-
-        for (var i = 0; i < temp.length; i++) {
-            document.getElementById('ConContainer').append(temp[i])
-        }
     }
 
     findThumbnails = (items) => {
@@ -60,6 +55,8 @@ class Content extends Component {
       console.log(itemsArray)
       let itemThumbnails = itemsArray.filter(item => item.data.thumbnail !== 'self')
       console.log(itemThumbnails)
+      this.setState({items: itemThumbnails})
+      console.log(this.state)
     }
 
 
@@ -67,13 +64,7 @@ class Content extends Component {
         return (
             <Container fluid style={{background: '#FF9B6D'}}>
                 <Heading className={"has-text-centered"} style={{color: '#F2F1DC'}}>Inspiration</Heading>
-                <Heading size={2}>Active Tile: {this.props.activeTile.name}</Heading>
-
-                <Container fluid id={"ConContainer"}>
-                    {this.loadContent()}
-                </Container>
-                
-
+                <div className="tile is-fluid is-vertical" id="ConContainer" style={{padding: '10px'}} />
             </Container>
         )
     }
