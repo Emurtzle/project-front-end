@@ -11,14 +11,16 @@ class Collection extends Component {
 
         this.state = {
             items: [],
+            currentCollection: localStorage.getItem("CollectionID"),
             current_user: localStorage.getItem("UserID"),
             token: localStorage.getItem('Token'),
             tiles: []
         }
+
     }
 
     componentDidMount() {
-        this.fetchCollection()
+      this.fetchItems()
     }
 
     loadTiles = () => {
@@ -77,29 +79,31 @@ class Collection extends Component {
         this.setState({tiles: tempArr})
     }
 
-    fetchCollection() {
-      //gotta send the token over
-      fetch((`http://localhost:3000/collections/${this.state.current_user}`), {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${this.state.token}`
-        }
-      })
-      .then(response => response.json())
-      .then(json => {
-        
-
-        localStorage['CollectionID'] = json.items[0].collection_id;
-        this.fetchItems()
-        })
-
-    }
+    // fetchCollection() {
+    //   //gotta send the token over
+    //   fetch((`http://localhost:3000/collections/${this.state.current_user}`), {
+    //     method: 'GET',
+    //     headers: {
+    //       Authorization: `Bearer ${this.state.token}`
+    //     }
+    //   })
+    //   .then(response => response.json())
+    //   .then(json => {
+    //     console.log(json)
+    //     console.log(this.state.currentCollection)
+    //
+    //     // localStorage['CollectionID'] = json.items[0].collection_id;
+    //     this.fetchItems()
+    //     })
+    //
+    // }
 
     fetchItems() {
+      console.log('hi',localStorage.getItem('CollectionID'))
       fetch((`http://localhost:3000/items/${localStorage.getItem('CollectionID')}`), {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${this.state.token}`
+          Authorization: `Bearer ${localStorage.getItem('Token')}`
         }
       })
       .then(response => response.json())

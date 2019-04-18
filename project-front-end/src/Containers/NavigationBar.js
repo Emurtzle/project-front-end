@@ -18,11 +18,11 @@ class NavigationBar extends Component {
     }
     render() {
         return (
-            <Navbar fixed={"top"} active={false} transparent={false} style={{background: '#FF5A51'}}>
-                
+            <Navbar fixed={"top"} active={false} transparent={false} style={{background: '#400101'}}>
+
                 <Navbar.Brand>
                     <Navbar.Item renderAs="a" href="/">
-                        <img src={logo} alt="Panning Out Logo" width="80"/>
+                        <img src={logo} alt="Panning Out Logo" width="30"/>
                     </Navbar.Item>
                     <Navbar.Burger />
                 </Navbar.Brand>
@@ -40,7 +40,7 @@ class NavigationBar extends Component {
                         {this.props.loggedIn && (
                             <Navbar.Item href="/" onClick={this.handleLogOutClick} style={{color: '#F2F1DC'}}>Log out</Navbar.Item>
                         )}
-                        
+
 
                     </Navbar.Container>
 

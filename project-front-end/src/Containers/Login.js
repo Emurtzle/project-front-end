@@ -43,9 +43,26 @@ class Login extends Component {
         localStorage.setItem('UserID', json.user.id);
         localStorage.setItem('Token', json.token);
         localStorage.setItem('UserName', json.user.name);
-
-        this.props.setLogIn();
+        this.fetchCollection()
       })
+  }
+
+  fetchCollection() {
+    //gotta send the token over
+    fetch((`http://localhost:3000/collections/${localStorage.getItem('UserID')}`), {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('Token')}`
+      }
+    })
+    .then(response => response.json())
+    .then(json => {
+      localStorage['CollectionID'] = json.items[0].collection_id;
+      this.props.setLogIn();
+
+      })
+
+
   }
 
 

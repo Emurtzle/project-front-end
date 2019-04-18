@@ -34,6 +34,7 @@ class App extends Component {
 
   setLogIn = () => {
     this.setState({loggedIn: true})
+
 }
 
   setLogOut = () => {
