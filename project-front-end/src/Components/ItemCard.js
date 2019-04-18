@@ -109,9 +109,9 @@ class ItemCard extends Component {
                 vertical
                 kind="child"
                 onClick={this.toggle}
-                className={active ? "has-background-success" : "has-background-info"}
                 style={{
-                    border: active ? '5px solid #ffff00' : ''
+                    border: active ? '5px solid #FF7C60' : '',
+                    background: active ? '#F2F1DC' : ""
                 }}
             >
                 <Tile size={12}>
