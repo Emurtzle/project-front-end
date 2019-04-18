@@ -38,7 +38,7 @@ class Content extends Component {
 
                 var div = document.createElement('div')
                 div.className = "tile is-parent is-vertical"
-                div.style.backgroundColor = "#CB59FF"
+                div.style.backgroundColor = "#FF7C60"
                 // div.style.border =
 
                 var h1Title = document.createElement('h1')

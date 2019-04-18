@@ -89,7 +89,6 @@ class NewItemForm extends Component {
   handleSubmit = (ev) => {
 
     this.setExpiration()
-    this.props.toggle()
 
   }
 
@@ -121,7 +120,10 @@ class NewItemForm extends Component {
     })
   })
     .then(r => r.json())
-    .then(json => console.log(json))
+    .then(json => {
+      this.props.toggle()
+      console.log(json)
+    })
   }
 
   setExpiration() {

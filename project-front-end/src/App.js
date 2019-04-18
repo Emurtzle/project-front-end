@@ -68,7 +68,7 @@ class App extends Component {
         <br/>
         <Router>
           <Route exact path="/" component={() => <Home loggedIn={loggedIn} setLogIn={this.setLogIn}/>} />
-          <Route exact path='/signup' component={() => <Signup />} />
+          <Route exact path='/signup' component={() => <Signup setLogIn={this.setLogIn}/>} />
           <Route exact path='/login' component={() => <Login />} />
         </Router>
       </Container>

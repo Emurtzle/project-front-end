@@ -29,14 +29,14 @@ class NavigationBar extends Component {
 
                 <Navbar.Menu>
                     <Navbar.Container>
+                    {this.props.loggedIn && (
                         <Navbar.Item onClick={this.props.addItemToggle} style={{color: '#F2F1DC'}}>
                             Add Item
                         </Navbar.Item>
+                    )}
                     </Navbar.Container>
 
                     <Navbar.Container position="end">
-                        <Navbar.Item href="/" style={{color: '#F2F1DC'}}>About</Navbar.Item>
-                        
                         {this.props.loggedIn && (
                             <Navbar.Item href="/" onClick={this.handleLogOutClick} style={{color: '#F2F1DC'}}>Log out</Navbar.Item>
                         )}

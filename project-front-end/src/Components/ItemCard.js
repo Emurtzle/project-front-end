@@ -134,7 +134,6 @@ class ItemCard extends Component {
 
                     {active && (
                         <Tile size={1}>
-                            <Button classNAme/>
                             <button className="delete is-medium" style={{background: 'red'}}/>
                         </Tile>
                     )}
