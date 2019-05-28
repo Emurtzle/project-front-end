@@ -24,7 +24,7 @@ class Signup extends Component {
 
   handleSubmit = (ev) => {
     //post to user database
-      fetch('http://localhost:3000/users', {
+      fetch('https://makeup-directory-backebd.herokuapp.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ class Signup extends Component {
   }
 
   handleCollection = (ev) => {
-    fetch('http://localhost:3000/collections', {
+    fetch('https://makeup-directory-backebd.herokuapp.com/collections', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

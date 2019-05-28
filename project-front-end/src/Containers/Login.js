@@ -25,7 +25,7 @@ class Login extends Component {
   // get auth from user profiles on backend
   handleSubmit = (ev) => {
     //post to user database
-      fetch('http://localhost:3000/profile', {
+      fetch('https://makeup-directory-backebd.herokuapp.com/profile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,13 +43,15 @@ class Login extends Component {
         localStorage.setItem('UserID', json.user.id);
         localStorage.setItem('Token', json.token);
         localStorage.setItem('UserName', json.user.name);
+      })
+      .then(()=> {
         this.fetchCollection()
       })
   }
 
   fetchCollection() {
     //gotta send the token over
-    fetch((`http://localhost:3000/collections/${localStorage.getItem('UserID')}`), {
+    fetch((`https://makeup-directory-backebd.herokuapp.com/collections/${localStorage.getItem('UserID')}`), {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('Token')}`

@@ -100,7 +100,8 @@ class Collection extends Component {
 
     fetchItems() {
       console.log('hi',localStorage.getItem('CollectionID'))
-      fetch((`http://localhost:3000/items/${localStorage.getItem('CollectionID')}`), {
+      
+      fetch((`https://makeup-directory-backebd.herokuapp.com/items/${localStorage.getItem('CollectionID')}`), {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('Token')}`
@@ -139,7 +140,7 @@ class Collection extends Component {
     render() {
         return (
             <Container fluid style={{background: '#FF7C60'}}>
-                <Heading className={"has-text-centered"} size={2} style={{color: '#F2F1DC'}}>Directory</Heading>
+                <Heading className={"has-text-centered"} size={2} style={{color: '#F2F1DC'}}>{localStorage.getItem('UserName')}'s Directory</Heading>
 
                 <Accordion >
                     <div label='All'>

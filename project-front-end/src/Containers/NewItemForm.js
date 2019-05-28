@@ -99,7 +99,7 @@ class NewItemForm extends Component {
   postItem() {
     let currentCollection = localStorage.getItem("CollectionID")
 
-    fetch('http://localhost:3000/items', {
+    fetch('https://makeup-directory-backebd.herokuapp.com/items', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -57,8 +57,8 @@ class Content extends Component {
 
                 figure.appendChild(image)
                 div.appendChild(h1Title)
-                div.appendChild(figure)
                 div.appendChild(h1Creator)
+                div.appendChild(figure)
 
 
                 document.getElementById('ConContainer').appendChild(div)
